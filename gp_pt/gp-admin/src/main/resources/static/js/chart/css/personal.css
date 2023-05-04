@@ -1,0 +1,171 @@
+
+.menu-box .icon-line {
+    margin: 18px 0;
+}
+
+/*布局*/
+.top {
+    width: 100%;
+    height: 50%;
+}
+.top .left {
+    width: 50%;
+    height: 100%;
+}
+.top .left .left-item {
+    width: 40%;
+    height: 100%;
+    background: url(../images/data_bg.png) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+.top .left .right-item {
+    width:60%;
+    height: 100%;
+    background: url(../images/data2_bg.png) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+.top .right {
+    width: 50%;
+    height: 100%;
+    background: url(../images/data3_bg.png) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+.bottom {
+    margin-bottom: 30px;
+    height: 50%;
+}
+.bottom .left,
+.bottom .right {
+    width: 50%;
+    height: 100%;
+    background: url(../images/border3.png) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    float: left;
+    overflow: hidden;
+}
+/*个人信息*/
+.avatar {
+    width: 120px;
+    height: 124px;
+    background: url(../images/avatar.png);
+    background-size: 100% 100%;
+    margin: 0 auto;
+    margin-top: 20px;
+    position: relative;
+}
+.avatar .img {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.avatar img {
+    width: 100%;
+    height: auto;
+}
+.info p {
+    font-size: 20px;
+    color: #fff;
+    margin-top: 10px;
+    text-align: center;
+}
+.info .name {
+    margin-top: 20px;
+}
+/*echarts样式*/
+.zhsz-e {
+    width: 100%;
+    height: 86%;
+}
+.pjfszs-e,.pjzbtop-e  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.pjzb-e{
+    width: 100%;
+    height: 100%;
+}
+@media (max-width: 1560px) {
+
+}
+
+
+
+
+
+
+
+
+.gl .gl-input::-webkit-input-placeholder {
+    font-family: "Microsoft YaHei", Helvetica, Arial, sans-serif;
+    font-size: .84778rem;
+    color: #8ec8ff
+}
+.gl .selector {
+    display: none;
+    width: 13.71869rem;
+    height: 9.36416rem;
+    background: url(../images/selector_bg.png);
+    background-size: 100% 100%;
+    font-size: .77071rem;
+    padding: .77071rem 0;
+    color: #fff;
+    position: absolute;
+    left: -.38536rem;
+    top: 1.46435rem;
+    z-index: 200
+}
+.gl .selector ul {
+    height: 100%;
+    overflow-y: auto;
+    padding-left:5px;
+    -ms-overflow-style: none
+}
+.gl .selector ul::-webkit-scrollbar {
+    display: none
+}
+.gl .selector a {
+    color: #fff
+}
+.gl .selector a:hover {
+    color: #8ec8ff
+}
+.gl .selector .selector-item {
+    line-height: 20px;
+    text-align: left;
+    height: 20px;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.gl .selector .sel-name {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 1.46435rem;
+    width: 3.85356rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+.gl .selector .sel-class {
+    display: inline-block;
+    vertical-align: middle;
+    width: 6.74374rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+
+

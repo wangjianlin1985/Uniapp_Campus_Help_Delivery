@@ -1,0 +1,372 @@
+<!-- 微信公众号通用CSS -->
+<head th:fragment=wxheader(title)>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+	<title th:text="${title}"></title>
+	<link rel="stylesheet" th:href="@{/wxres/third/layer_mobile/need/layer.css}"  />
+	<link rel="stylesheet" th:href="@{/wxres/css/public.css}"  />
+</head>
+
+<!-- 微信公众号通用JS -->
+<head th:fragment=wxfooter>
+	<script th:src="@{/wxres/third/jquery-3.4.1.min.js}"></script>
+    <script th:src="@{/wxres/third/layer_mobile/layer.js}"></script>
+    <script th:inline="javascript">  
+        var ctx = [[@{/}]];  
+        var pageSize = 10;
+       	/** 消息状态码 */
+       	web_status = {
+       	    SUCCESS: 0,
+       	    FAIL: 500,
+       	    WARNING: 301
+       	};
+
+       	/** 弹窗状态码 */
+       	modal_status = {
+       	    SUCCESS: "success",
+       	    FAIL: "error",
+       	    WARNING: "warning"
+       	};
+    	(function ($) {
+    		$.extend({
+    			wxmsg:{
+    				// 消息弹出框，
+    				info:function(content,btn){
+    					layer.open({
+    					    content: content
+    					    ,btn: btn
+    					});
+    				},
+    				// 消息2秒自动消失
+    				notice2s:function(content){
+    					layer.open({
+                            content: content
+                            ,skin: 'msg'
+                            ,time: 2
+                        });
+    				},
+    				notice1s:function(content){
+                        layer.open({
+                            content: content
+                            ,skin: 'msg'
+                            ,time: 1
+                        });
+                    },
+    				notice:function(content,timeout){
+    					layer.open({
+    					    content: content
+    					    ,skin: 'msg'
+    					    ,time: timeout
+    					});
+    				},
+    				// 确认框，
+    				askBth:function(content,btnArray,callback){
+    					layer.open({
+    					    content: content
+    					    ,btn: btnArray
+    					    ,yes: function(indexs){
+    					    	layer.close(indexs);
+    					    	callback();
+    					    }
+    					});
+    				},
+    				// 确认框
+    				ask:function(content,callback){
+                        layer.open({
+                            content: content
+                            ,btn: ['确认','取消']
+                            ,yes: function(indexs){
+                                layer.close(indexs);
+                                callback();
+                            }
+                        });
+                    }
+    			},
+    			wxoperate:{
+    				// ajax提交带loading
+    				submit: function(url, type, dataType, data,loadingMsg, callback) {
+    					if(loadingMsg == null){
+    						loadingMsg = '数据处理中';
+    					}
+    					var layerIndedx;
+    	                var config = {
+    	                    url: url,
+    	                    type: type,
+    	                    dataType: dataType,
+    	                    data: data,
+    	                    beforeSend: function () {
+    	                    	layerIndedx = layer.open({
+    	                            type: 2
+    	                            ,content: loadingMsg
+    	                        });
+    	                    },
+    	                    success: function(result) {
+    	                    	if (typeof callback == "function") {
+    	                            callback(result);
+    	                        }
+    	                    	layer.close(layerIndedx);
+    	                    }
+    	                };
+    	                $.ajax(config)
+    	            },
+    	            // post请求传输带loading
+    	            post: function(url, data,callback) {
+                        $.wxoperate.submit(url, "post", "json", data,null,callback);
+                    },
+                    // post请求传输带loading,自定义loading语句
+    	            postWithMsg: function(url, data,loadingMsg, callback) {
+    	                $.wxoperate.submit(url, "post", "json", data, loadingMsg,callback);
+    	            },
+    	            postLoadingOrNot: function(loading,url, data,callback){
+    	            	if(loading){
+    	            		$.wxoperate.post(url,data,callback);
+    	            	} else {
+    	            		$.wxoperate.postNoloading(url,data,true,callback);
+    	            	}
+    	            },
+    	            // get请求传输loading
+    	            get: function(url, callback) {
+                        $.wxoperate.submit(url, "get", "json", "",null, callback);
+                    },
+                    // get请求传输带loading,自定义loading语句
+    	            getWithMsg: function(url,loadingMsg, callback) {
+    	                $.wxoperate.submit(url, "get", "json", "",loadingMsg, callback);
+    	            },
+    	            // ajax传输，不带loading
+    	            submitNoloading: function(url,type,dataType,async,data,callback){
+    	                var config = {
+    	                    url: url,
+    	                    type: type,
+    	                    dataType: dataType,
+    	                    async: async,
+    	                    data: data,
+    	                    success: function(result) {
+    	                        if (typeof callback == "function") {
+    	                            callback(result);
+    	                        }
+    	                    }
+    	                };
+    	                $.ajax(config)
+    	            },
+    	            // 无“加载中”等弹窗提示的POST提交
+    	            postNoloading: function(url, data,async, callback) {
+    	                $.wxoperate.submitNoloading(url, "post", "json",async, data, callback);
+    	            },
+    	            // 无“加载中”等弹窗提示的GET提交
+    	            getNoloading: function(url,async, callback) {
+    	                $.wxoperate.submitNoloading(url, "get", "json",async, "", callback);
+    	            },
+    			}
+    		});
+    	})(jQuery);
+    
+    </script>
+</head>
+
+
+
+<!-- PC端通用CSS -->
+<head th:fragment=header(title)>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<title th:text="${title}"></title>
+	<link rel="shortcut icon" href="favicon.ico">
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+	<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet"/>
+	<!-- bootstrap-table 表格插件样式 -->
+	<link th:href="@{/ajax/libs/bootstrap-table/bootstrap-table.min.css}" rel="stylesheet"/>
+	<link th:href="@{/css/animate.css}" rel="stylesheet"/>
+	<link th:href="@{/css/style.css}" rel="stylesheet"/>
+	<link th:href="@{/ruoyi/css/ry-ui.css}" rel="stylesheet"/>
+</head>
+
+<!-- PC端通用JS -->
+<div th:fragment="footer">
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<!-- bootstrap-table 表格插件 -->
+	<script th:src="@{/ajax/libs/bootstrap-table/bootstrap-table.min.js}"></script>
+	<script th:src="@{/ajax/libs/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}"></script>
+	<script th:src="@{/ajax/libs/bootstrap-table/extensions/mobile/bootstrap-table-mobile.js}"></script>
+	<script th:src="@{/ajax/libs/bootstrap-table/extensions/toolbar/bootstrap-table-toolbar.min.js}"></script>
+	<script th:src="@{/ajax/libs/bootstrap-table/extensions/columns/bootstrap-table-fixed-columns.js}"></script>
+	<!-- jquery-validate 表单验证插件 -->
+	<script th:src="@{/ajax/libs/validate/jquery.validate.min.js}"></script>
+	<script th:src="@{/ajax/libs/validate/messages_zh.min.js}"></script>
+	<script th:src="@{/ajax/libs/validate/jquery.validate.extend.js}"></script>
+	<!-- jquery-validate 表单树插件 -->
+	<script th:src="@{/ajax/libs/bootstrap-treetable/bootstrap-treetable.js}"></script>
+	<!-- jquery-export 表格导出插件 -->
+	<script th:src="@{/ajax/libs/bootstrap-table/extensions/export/bootstrap-table-export.js}"></script>
+	<script th:src="@{/ajax/libs/bootstrap-table/extensions/export/tableExport.js}"></script>
+	<!-- 遮罩层 -->
+	<script th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>
+    <script th:src="@{/ajax/libs/iCheck/icheck.min.js}"></script>
+	<script th:src="@{/ajax/libs/layer/layer.min.js}"></script>
+	<script th:src="@{/ajax/libs/layui/layui.js}"></script>
+	<script th:src="@{/ruoyi/js/common.js?v=3.4.0}"></script>
+	<script th:src="@{/ruoyi/js/ry-ui.js?v=3.4.0}"></script>
+	<script th:inline="javascript"> var ctx = [[@{/}]]; </script>
+</div>
+
+<!-- ztree树插件 -->
+<div th:fragment="ztree-css">
+    <link th:href="@{/ajax/libs/jquery-ztree/3.5/css/metro/zTreeStyle.css}" rel="stylesheet"/>
+</div>
+<div th:fragment="ztree-js">
+    <script th:src="@{/ajax/libs/jquery-ztree/3.5/js/jquery.ztree.all-3.5.js}"></script>
+</div>
+
+<!-- select2下拉框插件 -->
+<div th:fragment="select2-css">
+    <link th:href="@{/ajax/libs/select2/select2.min.css}" rel="stylesheet"/>
+    <link th:href="@{/ajax/libs/select2/select2-bootstrap.css}" rel="stylesheet"/>
+</div>
+<div th:fragment="select2-js">
+    <script th:src="@{/ajax/libs/select2/select2.min.js}"></script>
+</div>
+
+<!-- bootstrap-select下拉框插件 -->
+<div th:fragment="bootstrap-select-css">
+    <link th:href="@{/ajax/libs/bootstrap-select/bootstrap-select.css}" rel="stylesheet"/>
+</div>
+<div th:fragment="bootstrap-select-js">
+    <script th:src="@{/ajax/libs/bootstrap-select/bootstrap-select.js}"></script>
+</div>
+
+<!-- datetimepicker日期和时间插件 -->
+<div th:fragment="datetimepicker-css">
+    <link th:href="@{/ajax/libs/datapicker/bootstrap-datetimepicker.min.css}" rel="stylesheet"/>
+</div>
+<div th:fragment="datetimepicker-js">
+    <script th:src="@{/ajax/libs//datapicker/bootstrap-datetimepicker.min.js}"></script>
+</div>
+
+<!-- ui布局插件 -->
+<div th:fragment="layout-latest-css">
+    <link th:href="@{/ajax/libs/jquery-layout/jquery.layout-latest.css}" rel="stylesheet"/>
+</div>
+<div th:fragment="layout-latest-js">
+    <script th:src="@{/ajax/libs/jquery-layout/jquery.layout-latest.js}"></script>
+</div>
+
+<!-- summernote富文本编辑器插件 -->
+<div th:fragment="summernote-css">
+    <link th:href="@{/ajax/libs/summernote/summernote.css}" rel="stylesheet"/>
+	<link th:href="@{/ajax/libs/summernote/summernote-bs3.css}" rel="stylesheet"/>
+</div>
+<div th:fragment="summernote-js">
+    <script th:src="@{/ajax/libs/summernote/summernote.min.js}"></script>
+	<script th:src="@{/ajax/libs/summernote/summernote-zh-CN.js}"></script>
+</div>
+
+<!-- cropbox图像裁剪插件 -->
+<div th:fragment="cropbox-css">
+    <link th:href="@{/ajax/libs/cropbox/cropbox.css}" rel="stylesheet"/>
+</div>
+<div th:fragment="cropbox-js">
+    <script th:src="@{/ajax/libs/cropbox/cropbox.js}"></script>
+</div>
+
+<!-- jasny功能扩展插件 -->
+<div th:fragment="jasny-bootstrap-css">
+    <link th:href="@{/ajax/libs/jasny/jasny-bootstrap.min.css}" rel="stylesheet"/>
+</div>
+<div th:fragment="jasny-bootstrap-js">
+    <script th:src="@{/ajax/libs/jasny/jasny-bootstrap.min.js}"></script>
+</div>
+
+<!-- fileinput文件上传插件 -->
+<div th:fragment="bootstrap-fileinput-css">
+    <link th:href="@{/ajax/libs/bootstrap-fileinput/fileinput.min.css}" rel="stylesheet"/>
+</div>
+<div th:fragment="bootstrap-fileinput-js">
+    <script th:src="@{/ajax/libs/bootstrap-fileinput/fileinput.min.js}"></script>
+</div>
+
+<!-- duallistbox双列表框插件 -->
+<div th:fragment="bootstrap-duallistbox-css">
+    <link th:href="@{/ajax/libs/duallistbox/bootstrap-duallistbox.min.css}" rel="stylesheet"/>
+</div>
+<div th:fragment="bootstrap-duallistbox-js">
+    <script th:src="@{/ajax/libs/duallistbox/bootstrap-duallistbox.min.js}"></script>
+</div>
+
+<!-- suggest搜索自动补全 -->
+<div th:fragment="bootstrap-suggest-js">
+    <script th:src="@{/ajax/libs/suggest/bootstrap-suggest.min.js}"></script>
+</div>
+
+<!-- typeahead搜索自动补全 -->
+<div th:fragment="bootstrap-typeahead-js">
+    <script th:src="@{/ajax/libs/typeahead/bootstrap3-typeahead.js}"></script>
+</div>
+
+<!-- jsonview格式化和语法高亮JSON格式数据查看插件 -->
+<div th:fragment="jsonview-css">
+    <link th:href="@{/ajax/libs/jsonview/jquery.jsonview.css}" rel="stylesheet"/>
+</div>
+<div th:fragment="jsonview-js">
+    <script th:src="@{/ajax/libs/jsonview/jquery.jsonview.js}"></script>
+</div>
+
+<!-- jquery.steps表单向导插件 -->
+<div th:fragment="jquery-steps-css">
+    <link th:href="@{/ajax/libs/staps/jquery.steps.css}" rel="stylesheet"/>
+</div>
+<div th:fragment="jquery-steps-js">
+    <script th:src="@{/ajax/libs/staps/jquery.steps.min.js}"></script>
+</div>
+
+
+<!-- jquery.toastr提示框插件 -->
+<div th:fragment="jquery-toastr-css">
+    <link th:href="@{/ajax/libs/toastr/toastr.min.css}" rel="stylesheet"/>
+</div>
+<div th:fragment="jquery-toastr-js">
+    <script th:src="@{/ajax/libs/toastr/toastr.min.js}"></script>
+</div>
+
+
+<!-- ECharts百度统计图表插件 -->
+<div th:fragment="echarts-js">
+    <script th:src="@{/ajax/libs/report/echarts/echarts.min.js}"></script>
+</div>
+
+<!-- peity图表组合插件 -->
+<div th:fragment="peity-js">
+    <script th:src="@{/ajax/libs/report/peity/jquery.peity.min.js}"></script>
+</div>
+
+<!-- sparkline线状图插件 -->
+<div th:fragment="sparkline-js">
+    <script th:src="@{/ajax/libs/report/sparkline/jquery.sparkline.min.js}"></script>
+</div>
+
+<!-- 表格拖拽插件 -->
+<div th:fragment="bootstrap-table-reorder-js">
+	<script th:src="@{/ajax/libs/bootstrap-table/extensions/reorder/bootstrap-table-reorder.js}"></script>
+	<script th:src="@{/ajax/libs/bootstrap-table/extensions/reorder/jquery.tablednd.js}"></script>
+</div>
+
+
+
+<!-- layui transfer -->
+<div th:fragment="layui-transfer-css">
+    <link th:href="@{/ajax/libs/layui_high/css/layui.css}" rel="stylesheet"/>
+</div>
+<div th:fragment="layui-transfer-js">
+    <script th:src="@{/ajax/libs/layui_high/layui.js}"></script>
+    <script th:src="@{/ajax/libs/layui_high/transfer.js}"></script>
+</div>
+
+
+<!-- layui2.5.5 -->
+<div th:fragment="layui255-css">
+    <link th:href="@{/ajax/libs/layui2.5.5/css/layui.css}" rel="stylesheet"/>
+</div>
+<div th:fragment="layui255-js">
+    <script th:src="@{/ajax/libs/layui2.5.5/layui.js}"></script>
+</div>

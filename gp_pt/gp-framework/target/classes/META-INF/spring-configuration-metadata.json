@@ -1,0 +1,18 @@
+{
+  "groups": [
+    {
+      "name": "spring.datasource.druid.master",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.study.framework.config.DruidConfig",
+      "sourceMethod": "public javax.sql.DataSource masterDataSource(com.study.framework.config.DruidProperties) "
+    },
+    {
+      "name": "spring.datasource.druid.slave",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.study.framework.config.DruidConfig",
+      "sourceMethod": "public javax.sql.DataSource slaveDataSource(com.study.framework.config.DruidProperties) "
+    }
+  ],
+  "properties": [],
+  "hints": []
+}

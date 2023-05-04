@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('文章内容')" />
+	<th:block th:include="include :: summernote-css" />
+	<title th:text="${main.mainTitle}"></title>
+</head>
+<body class="white-bg">
+    <div class="row">
+			<div class="col-lg-10 col-lg-offset-1">
+				<div class="ibox">
+					<div class="ibox-content">
+						<center>
+							<h1 th:text="${main.mainTitle}"></h1>
+						</center>
+						
+						<center>
+							<h2  th:text="${main.mainSubtitle}"></h2>
+						</center>
+						<div class="col-sm-12" style="font-size:18px" th:if="${main.mainId != 38}" >
+							发布人：<span th:text="${main.mainAuthor}"></span> &nbsp;&nbsp;&nbsp;
+							时间：<span th:text="${#dates.format(main.publishTime,'yyyy-MM-dd HH:mm:ss')}" ></span>
+						</div>
+						<br /><br />
+						<input type="hidden" id="content" th:value="${content.content}" />
+						<div class="col-sm-12">
+							<div id="editor" class="summernote"></div>
+						</div>
+						<div class="row"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+    <th:block th:include="include :: footer" />
+    <th:block th:include="include :: summernote-js" />
+	<script type="text/javascript">
+	$(function(){
+		var content = $("#content").val();
+	    $('#editor').summernote('code', content);
+	    $('#editor').summernote("destroy");
+	});
+	</script>
+</body>
+</html>

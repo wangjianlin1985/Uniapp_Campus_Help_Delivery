@@ -1,0 +1,382 @@
+.main-box .main-top {
+    height: 40%;
+}
+.main-box .item {
+    width: 33.333%;
+    height: 100%;
+    background: url("../images/border-left.png") no-repeat top center;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+.tabs {
+    width: 232px;
+    height: 18px;
+    font-size: 13px;
+    line-height: 18px;
+    color: #8ec8ff;
+    background: url("../images/rank_tab_border-l.png") no-repeat top center;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    margin-top: 18px;
+    margin-right: 20px;
+}
+
+.tabs.on {
+    background: url("../images/rank_tab_border-r.png") no-repeat top center;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+.tabs .tab-lf {
+    margin-left: 16px;
+    margin-right: 26px;
+}
+
+.tabs .tab {
+    cursor: pointer;
+}
+.main-top .grow-up {
+    background-image: url(../images/class-border3.png);
+}
+.main-top .grow-up .top {
+    height: 100%;
+    position: relative;
+}
+.main-top .teacher .main {
+    position: relative;
+    width: 100%;
+    height: 80%;
+}
+.main-top .main-content {
+    margin: 10px auto;
+    width: 96%;
+    height: 100%;
+}
+
+.grow-up .amount {
+    color: #fff;
+    font-size: 30px;
+    margin-top: 16px;
+    height: 28%;
+}
+
+.grow-up .amount .comma {
+    width: 6px;
+    height: 12px;
+    background: url(../images/comma.png) no-repeat;
+    background-size: 100% 100%;
+    margin-top: 48px;
+}
+
+.grow-up .num-item {
+    background: url("../images/number_border.png") no-repeat center center;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    width: 11%;
+    height: 82%;
+    text-align: center;
+    line-height: 64px;
+}
+
+.grow-up .num-item-first {
+    margin-left: 44px;
+}
+
+.grow-up .increase {
+    margin-left: 20px;
+    margin-top: 4px;
+}
+
+.grow-up .increase .count {
+    font-size: 13px;
+}
+
+.icon-down-svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    margin-top: 6px;
+}
+
+.student-class {
+    margin-top: 10px;
+}
+
+.student-class-item {
+    font-size: 18px;
+    color: #8ec8ff;
+    width: 49%;
+    padding: 0 54px;
+    box-sizing: border-box;
+}
+
+.student-class-item .rate .icon-down-svg {
+    width: 18px;
+    height: 18px;
+    margin-left: 5px;
+    margin-top: 4px;
+}
+
+.student-class-item .num {
+    color: #fff;
+    display: block;
+    font-size: 22px;
+}
+
+.student-class-item .num i {
+    margin-right: 6px;
+    font-size: 26px;
+}
+
+.student-class .icon-line {
+    margin: 20px 0 0 0;
+    width: 3px;
+    height: 50px;
+}
+
+.main-top .evaluate {
+    background-image: url(../images/border-right.png);
+}
+
+.main-bottom .left-box {
+    background-image: url(../images/class-border1.png);
+}
+
+.main-bottom .center-box {
+    width: 33.333%;
+    height: 100%;
+}
+.main-bottom .center-box-top,
+.main-bottom .center-box-bottom {
+    width: 100%;
+    height: 50%;
+    background: url("../images/class-border2.png") no-repeat top center;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+.main-bottom .right-box {
+    background-image: url(../images/class-border1.png);
+}
+/*评价指标*/
+.evaluate-target {
+    position: relative;
+}
+.evaluate-target .main {
+    position: relative;
+    height: 93%;
+}
+.evaluate-target .title {
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+.evaluate-target .main-content {
+    width: 96%;
+    height: 100%;
+}
+
+/*学生分数与排行*/
+
+.main-box .main-bottom {
+    height: 60%;
+}
+
+.main-bottom .item {
+    width: 33.3333%;
+    height: 100%;
+}
+
+.score-main .main-detail {
+    width: 100%;
+    height:  90%;
+    overflow-y: scroll;
+    box-sizing: border-box;
+}
+.score-main .title-s {
+    width: 100%;
+    overflow-y: scroll;
+}
+.score-main .title-s::-webkit-scrollbar {
+    width: 4px;
+}
+    /*滚动条整体样式*/
+.score-main .main-detail::-webkit-scrollbar {
+    width: 4px;
+}
+/*滚动条里面小方块*/
+.score-main .main-detail::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #8ec8ff;
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+}
+/*滚动条里面轨道*/
+.score-main .main-detail::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.score-main {
+    width: 100%;
+    height: 90%;
+}
+.score-main .main-item {
+    width: 94%;
+    height: 99%;
+    margin: 0 auto;
+}
+.score-main .main-item .title-s {
+    border-top: 1px solid #294f9e;
+}
+.score-main .main-item .title-s,
+.score-main .main-item .main-detail {
+    border-right: 1px solid #294f9e;
+    border-left: 1px solid #294f9e;
+    box-sizing: border-box;
+}
+.score-main .main-item .main-detail {
+    border-bottom: 1px solid #294f9e;
+}
+.score-main .main-item .title-s,
+.score-main .main-item .main-detail .list-item {
+    width: 100%;
+}
+.score-main .main-item .title-s {
+    height: 32px;
+    line-height: 32px;
+    background: #172659;
+    color: #8ec8ff;
+}
+.score-main .main-item span:nth-of-type(1) {
+    border: none;
+}
+.score-main .main-item .list-item {
+    height: 10%;
+    line-height: 3;
+    color: #fff;
+}
+.score-main .main-item span {
+    float: left;
+    text-align: center;
+    border-left: 1px solid #294f9e;
+    box-sizing: border-box;
+    width: 19%;
+    height: 100%;
+}
+
+.score-main-item-yx  span:nth-of-type(2),
+.score-main-item-yj  span:nth-of-type(3) {
+    width: 120px;
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+
+.score-main-item-yj .list-item span:nth-of-type(3),
+.score-main-item-yx .list-item span:nth-of-type(2) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.score-main .list-item:nth-of-type(even) {
+    background: rgba(21,36,93,.5);
+}
+
+/*评价行为分布*/
+.behavior-con {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+}
+.behavior-con .con {
+    height: 100%;
+}
+.main-behavior-content {
+    width: 50%;
+    height: 100%;
+}
+.evaluate-content {
+    position: relative;
+}
+.evaluate-content .title {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.behavior-con canvas {
+    top: 6px !important;
+}
+/*评价分数走势*/
+.main-bottom .center-box-bottom .top {
+    height: 100%;
+}
+.evaluate-con {
+    position: relative;
+    height: 90%;
+}
+.main-evaluate-content {
+    width: 96%;
+    height: 100%;
+}
+/*适配*/
+
+@media (min-width: 1561px) {
+    .student-class-item {
+        font-size: 22px;
+    }
+    .grow-up .num-item {
+        width: 12%;
+        height: 88px;
+        line-height: 88px;
+    }
+}
+@media (max-width: 1680px) {
+    .score-main .main-item span {
+        width: 17%;
+    }
+    .score-main .main-item .span28 {
+        width: 28%
+    }
+}
+@media (max-width: 1560px) {
+    .student-class-item {
+        padding: 0 48px;
+    }
+    .score-main-item-yj span:nth-of-type(3),
+    .score-main-item-yx span:nth-of-type(2) {
+        width: 100px;
+    }
+    .score-main .main-item span {
+        width: 18%;
+    }
+    .score-main .main-item .span28 {
+        width: 28%
+    }
+}
+@media (max-width: 1390px) {
+    .score-main .main-item {
+        font-size: 12px;
+    }
+    .main-box .title {
+        font-size: 14px;
+    }
+
+}
+@media (max-height: 880px) {
+    .score-main .main-item {
+        height: 96%;
+    }
+    .main-top .teacher .main {
+        height: 74%;
+    }
+}
+@media (max-height: 800px) {
+    .score-main .main-item {
+        height: 94%;
+    }
+    .main-top .teacher .main {
+        height: 70%;
+    }
+}
+

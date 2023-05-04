@@ -1,0 +1,156 @@
+
+.tab {
+    width: 100%;
+    height: 44px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.tab div {
+    width: 100%;
+}
+
+.tab span {
+    position: relative;
+    font-weight: bold;
+    font-size: 16px;
+    color: #323232;
+    width: 50%;
+    line-height: 44px;
+    background: #fff;
+    text-align: center;
+}
+
+.tab span.current {
+    color: #00acee;
+}
+
+.tab span.current::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    content: '';
+    width: 80px;
+    border-bottom: 4px solid #00acee;
+}
+
+.occupied {
+    width: 100%;
+    height: 59px;
+    background-color: #fff;
+}
+
+.big-wrap {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+}
+.seek {
+    display: flex;
+    justify-content: space-between;
+}
+.seek input {
+    padding-left: 10px;
+    height: 34px;
+    line-height: 34px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    color: #888;
+    box-sizing: border-box;
+    background: url(../images/arrow-down.svg) no-repeat right center;
+    -webkit-background-size: 28px auto;
+    background-size: 28px auto;
+}
+.seek-btn {
+    display: block;
+    width: 157px;
+    height: 34px;
+    line-height: 34px;
+    border-radius: 6px;
+    background: #00A0F9;
+    font-size: 14px;
+    color: #fff;
+    position: relative;
+    box-sizing: border-box;
+    padding-left: 23px;
+    text-align: center;
+
+}
+.seek-btn::after {
+    content: '';
+    background: url(../images/search-btn-icon.svg) no-repeat center center;
+    width: 19px;
+    height: 16px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -23px;
+    transform: translate(-50%,-50%);
+}
+.result {
+    width: 100%;
+    border-top: 15px solid #f0f0f0;
+}
+.result section {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 20px;
+}
+.card {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    position: relative;
+    margin-bottom: 15px;
+    display: block;
+}
+ .my-title {
+     padding-top: 0;
+     padding-bottom: 0;
+    line-height: 55px;
+}
+.card p:first-of-type {
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 4px;
+}
+.card p:nth-of-type(2) {
+    padding-top: 4px;
+}
+.card p {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 10px;
+    font-size: 14px;
+    line-height: 30px;
+}
+.card i {
+    color: #999;
+    margin-right: 10px;
+}
+.card span {
+    color: #555;
+}
+.arrow {
+    position: absolute;
+    right: 20px;
+    bottom: 25px;
+    background: url(../images/arrow-more.svg) no-repeat center center;
+    width: 30px;
+    height: 30px;
+}
+/*已审核*/
+.yishenhe .seek-btn {
+    margin: 20px auto 0;
+}
+.yishenhe .seek input:last-of-type {
+    background: none;
+}
+.yishenhe .arrow {
+    background: none;
+    font-size: 12px;
+    color: #00acee;
+    bottom: 5px;
+}

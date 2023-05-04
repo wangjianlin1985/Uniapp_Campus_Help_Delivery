@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.article.dao.ArticleMainDao">
+
+     <resultMap type="ArticleMain" id="ArticleMainResult">
+        <id     property="mainId"        column="main_id"       />
+        <result property="mainTitle"     column="main_title"    />
+        <result property="mainSubtitle"  column="main_subtitle" />
+        <result property="mainAuthor"    column="main_author"   />
+        <result property="mainStart"     column="main_start"    />
+        <result property="mainEnd"       column="main_end"      />
+        <result property="mainSummary"   column="main_summary"  />
+        <result property="publishTime"   column="publish_time"  />
+        <result property="remark"        column="remark"        />
+        <result property="sort"          column="sort"          />
+        <result property="istop"         column="istop"         />
+        <result property="cover"         column="cover"         />
+        <association property="item"     column="item_id" javaType="ArticleItem" resultMap="itemResult" />
+    </resultMap>
+    
+    <resultMap id="itemResult" type="ArticleItem">
+        <id     property="itemId"   column="item_id"     />
+        <result property="itemName" column="item_name"   />
+        <result property="sort"     column="item_sort"   />
+    </resultMap>
+
+
+    <sql id="selectArticleMainVo">
+        select a.main_id, a.main_title, a.main_subtitle,a.main_author,a.main_start,a.main_end,a.cover,
+            a.main_summary,a.publish_time,a.remark,a.sort,a.istop,a.item_id,b.item_name,b.sort as item_sort
+        from article_main a left join article_item b on a.item_id = b.item_id
+    </sql>
+
+    <select id="list" parameterType="ArticleMain" resultMap="ArticleMainResult">
+        <include refid="selectArticleMainVo"/>
+        where a.delete_flag = #{deleteFlag}
+        <if test="item != null and item.itemId != null and '' != item.itemId">
+            and a.item_id = #{item.itemId}
+        </if>
+        <if test="mainTitle != null and '' != mainTitle">
+            and a.main_title like concat('%',#{mainTitle},'%')
+        </if>
+        <if test="mainAuthor != null and '' != mainAuthor">
+            and a.main_author like concat('%',#{mainAuthor},'%')
+        </if>
+        <if test="searchTime != null">
+        	and a.main_start &lt;= #{searchTime}
+        	and a.main_end &gt;= #{searchTime}
+        </if>
+        order by a.istop desc,a.sort desc
+    </select>
+    
+    <select id="countByItem" parameterType="ArticleMain" resultType="int">
+        select 
+            count(1) 
+        from article_main a 
+            left join article_item b on a.item_id = b.item_id 
+        where a.delete_flag = #{deleteFlag} and a.item_id = #{item.itemId}
+    </select>
+
+    <select id="getById" parameterType="Long" resultMap="ArticleMainResult">
+        <include refid="selectArticleMainVo"/> where a.main_id = #{mainId}
+    </select>
+    
+    
+     <update id="deleteBatchMapArray" parameterType="java.util.Map">
+        update 
+            article_main 
+        set 
+            delete_flag = #{deleteFlag},
+            delete_by = #{deleteBy},
+            delete_time = sysdate() 
+        where main_id in 
+        <foreach item="mainId" collection="array" open="(" separator="," close=")">
+            #{mainId}
+        </foreach>
+    </update>
+    
+    
+    <update id="update" parameterType="ArticleMain">
+        update article_main
+        <set>
+            <if test="mainTitle != null and mainTitle != ''">main_title = #{mainTitle},</if>
+            <if test="mainSubtitle != null and mainSubtitle != ''">main_subtitle = #{mainSubtitle},</if>
+            <if test="mainAuthor != null and mainAuthor != ''">main_author = #{mainAuthor},</if>
+            <if test="mainStart != null">main_start = #{mainStart},</if>
+            <if test="mainEnd != null">main_end = #{mainEnd},</if>
+            <if test="mainSummary != null and mainSummary != ''">main_summary = #{mainSummary},</if>
+            <if test="remark != null and remark != ''">remark = #{remark},</if>
+            <if test="istop != null and istop != ''">istop = #{istop},</if>
+            <if test="item != null and item.itemId != null and '' != item.itemId">item_id = #{item.itemId},</if>
+            <if test="sort != null">sort = #{sort},</if>
+            <if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+            <if test="cover != null and cover != ''">cover = #{cover},</if>
+            update_time = sysdate(),
+            publish_time = sysdate()
+        </set>
+        where main_id = #{mainId}
+    </update>
+    
+    
+     <insert id="add" parameterType="ArticleMain" useGeneratedKeys="true" keyProperty="mainId">
+        insert into article_main(
+            <if test="mainTitle != null and mainTitle != ''">main_title,</if>
+            <if test="mainSubtitle != null and mainSubtitle != ''">main_subtitle,</if>
+            <if test="mainAuthor != null and mainAuthor != ''">main_author,</if>
+            <if test="mainStart != null">main_start,</if>
+            <if test="mainEnd != null">main_end,</if>
+            <if test="mainSummary != null and mainSummary != ''">main_summary,</if>
+            <if test="istop != null and istop != ''">istop,</if>
+            <if test="sort != null">sort,</if>
+            <if test="remark != null and remark != ''">remark,</if>
+            <if test="createBy != null and createBy != ''">create_by,</if>
+            <if test="cover != null and cover != ''">cover,</if>
+            <if test="item != null and item.itemId != null and '' != item.itemId">item_id,</if>
+            create_time,
+            publish_time
+        )values(
+            <if test="mainTitle != null and mainTitle != ''">#{mainTitle},</if>
+            <if test="mainSubtitle != null and mainSubtitle != ''">#{mainSubtitle},</if>
+            <if test="mainAuthor != null and mainAuthor != ''">#{mainAuthor},</if>
+            <if test="mainStart != null">#{mainStart},</if>
+            <if test="mainEnd != null">#{mainEnd},</if>
+            <if test="mainSummary != null and mainSummary != ''">#{mainSummary},</if>
+            <if test="istop != null and istop != ''">#{istop},</if>
+            <if test="sort != null">#{sort},</if>
+            <if test="remark != null and remark != ''">#{remark},</if>
+            <if test="createBy != null and createBy != ''">#{createBy},</if>
+            <if test="cover != null and cover != ''">#{cover},</if>
+            <if test="item != null and item.itemId != null and '' != item.itemId">#{item.itemId},</if>
+            sysdate(),
+            sysdate()
+        )
+    </insert>
+    
+
+</mapper>

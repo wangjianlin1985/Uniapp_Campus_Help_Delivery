@@ -1,0 +1,520 @@
+{
+	"pages": [{
+		"path": "pages/index/index",
+		"style": {
+			"navigationBarTitleText": "跑腿系统"
+		}
+	}, {
+		"path": "pages/login/login",
+		"style": {
+			"navigationBarTitleText": "登录",
+			"app-plus": {
+				"titleNView": {
+					"autoBackButton": false,
+					"buttons": [{
+						"type": "menu",
+						"float": "right"
+					}]
+				}
+			}
+		}
+	}, {
+		"path": "pages/login/longSetIP/longSetIP",
+		"style": {
+			"navigationBarTitleText": "配置IP端口"
+		}
+	}	
+        ,{
+            "path" : "pages/grzx/grzx",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "个人信息",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/grzx/updatePhone",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改手机",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/grzx/updateEmail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改邮箱",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/grzx/updateUserName",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改姓名",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/login/register/register",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "注册",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/home/home",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "个人中心",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/article/articleDetail/articleDetail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "文章详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        
+        ,{
+            "path" : "pages/taskfood/detailSimple/detailSimple",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "外卖订单详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskfood/userAdd/userAdd",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "新增外卖订单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/order/orderUser",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的订单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskfood/mystartList/mystartList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的外卖订单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/address/address",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的地址",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/address/add/add",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "新增地址",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/address/update/update",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改地址",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskfood/todoList/todoList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "外卖待接单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/order/orderPty",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的订单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskfood/mytaskList/mytaskList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的外卖接单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskfood/detailComplex/detailComplex",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "外卖详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/order/liushuiUser/liushuiUser",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "账单流水",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/order/liushuiPty/liushuiPty",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "账单流水",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/order/chongzhi/chongzhi",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "充值",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/order/quxian/quxian",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "取现",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskgoods/userAdd/userAdd",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "新增购物订单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskgoods/todoList/todoList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "购物待接单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskgoods/detailSimple/detailSimple",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "购物详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskgoods/mystartList/mystartList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的购物订单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskgoods/mytaskList/mytaskList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的购物接单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskgoods/detailComplex/detailComplex",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "购物详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/parcel/userAdd/userAdd",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "新增快递订单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/parcel/todoList/todoList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "快递待接单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/parcel/detailSimple/detailSimple",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "快递详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/parcel/mystartList/mystartList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的快递订单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/parcel/mytaskList/mytaskList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的快递接单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/parcel/detailComplex/detailComplex",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "快递订单详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskother/userAdd/userAdd",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "新增其他订单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskother/detailSimple/detailSimple",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "其他订单详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskother/detailComplex/detailComplex",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "其他订单详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskother/todoList/todoList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "其他待接单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskother/mytaskList/mytaskList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的其他接单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskother/mystartList/mystartList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的其他订单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/home/moment/moment",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "朋友圈",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"type": "none",
+							"fontSize": "32upx",
+							"text": "发表",
+							"float": "right"
+						}]
+					}
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/home/moment/momentAdd/momentAdd",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "发表心情",
+                "app-plus": {
+                	"titleNView": {
+                		"buttons": [{
+                			"type": "none",
+                			"fontSize": "32upx",
+                			"text": "发表",
+                			"float": "right"
+                		}]
+                	}
+                }
+            }
+            
+        }
+        ,{
+            "path" : "pages/grzx/updatePassword/updatePassword",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改密码",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/grzx/updateAvatar/updateAvatar",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改头像",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskprint/userAdd/userAdd",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "新增打印订单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskprint/detailSimple/detailSimple",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "打印订单详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskprint/detailComplex/detailComplex",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "打印订单详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/taskprint/mystartList/mystartList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的打印定单",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/taskprint/todoList/todoList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "打印待接单",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/taskprint/mytaskList/mytaskList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的打印接单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"tabBar": {
+			"color": "#000000",
+			"selectedColor": "#0081FF",
+			"borderStyle": "black",
+			"backgroundColor": "#FFFFFF",
+			"list": [{
+					"pagePath": "pages/index/index",
+					"text": "首页",
+					"iconPath": "static/icons/tabBar/index.png",
+					"selectedIconPath": "static/icons/tabBar/indexed.png"
+				}
+				, {
+					"pagePath": "pages/home/home",
+					"text": "个人中心",
+					"iconPath": "static/icons/tabBar/home.png",
+					"selectedIconPath": "static/icons/tabBar/homeed.png"
+				}
+			]
+		},
+	"globalStyle": {
+		"navigationBarBackgroundColor": "#0081ff",
+		"navigationBarTitleText": "校园跑腿",
+		"navigationBarTextStyle": "white"
+	}
+}

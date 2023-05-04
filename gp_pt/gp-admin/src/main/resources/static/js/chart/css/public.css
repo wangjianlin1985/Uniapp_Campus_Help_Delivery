@@ -1,0 +1,555 @@
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img {
+    margin: 0;
+    padding: 0;
+}
+
+img, input, button {
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline-style: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+select, input {
+    font-size: 14px;
+    font-family: inherit;
+    padding: 0;
+    margin: 0;
+    border: none;
+    vertical-align: middle;
+    -webkit-appearance: none;
+}
+
+textarea {
+    resize: none;
+    outline: none;
+    border: 0 none;
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+    -webkit-appearance: none;
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+body {
+    font-family: "Microsoft YaHei", Arial, SimSun, tahoma, Verdana;
+    color: #6a6a7c;
+    background: #fff;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 100%;
+}
+
+s, i, em {
+    font-style: normal;
+    text-decoration: none;
+}
+
+b {
+    font-weight: normal;
+}
+
+input, button {
+    display: inline-block;
+    font-family: inherit;
+    border: 0 none;
+    outline: none;
+    background: none;
+}
+
+input:focus {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-user-modify: read-write-plaintext-only;
+}
+
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: block;
+    line-height: 0;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.oh {
+    overflow: hidden;
+}
+
+.w {
+    width: 96%;
+    height: 100%;
+    min-width: 1190px;
+    margin: 0 auto;
+}
+.main-top .top {
+    box-sizing: border-box;
+    padding-top: 10px;
+}
+.main-box {
+    width: 100%;
+    height: 90%;
+    min-height: 700px;
+}
+.hide {
+    display: none;
+}
+
+.my-border {
+    border: 1px solid #71a0d2;
+}
+
+html,body {
+    width: 100%;
+    height: 100%;
+}
+
+/*去除滚动条*/
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    background: #0E1229 url("../images/bg_star.png") no-repeat center center;
+}
+/*日期控件*/
+.date-pick-con {
+    position: relative;
+    cursor: pointer;
+}
+.date-pick {
+    width: 200px;
+    line-height: 70px;
+    float: left;
+    margin-left: 10px;
+    cursor: pointer;
+    color: #8ec8ff;
+    font-size: 16px;
+}
+.date-pick::placeholder {
+    color: #8ec8ff;
+    font-size: 16px;
+}
+.my-layui-con {
+    position: absolute;
+    top: 60px;
+    left: -4px;
+    width: 320px;
+    height: 280px;
+    border: 2px solid #284c95;
+    background: #fff;
+    z-index: 1;
+    box-sizing: border-box;
+}
+.btns {
+    float: left;
+    cursor: pointer;
+    width: 44px;
+    height: 100%;
+    background: #0a6eaf;
+    box-sizing: border-box;
+}
+.btns li:first-of-type {
+    margin-top: 80px;
+}
+.btns li.current a {
+    background: #0c1330;
+}
+.btns li {
+    padding: 10px 0;
+}
+.btns li a {
+    display: block;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+}
+.btns li:hover a {
+    background: #0c1330;
+}
+.my-layui {
+    float: left;
+    width: 272px;
+    height: 100%;
+    box-sizing: border-box;
+    background: #bee7ef;
+}
+
+.layui-laydate {
+    border: 0 none !important;
+}
+.layui-laydate-header i {
+    color: #fff !important;
+}
+.layui-laydate-header .laydate-set-ym:hover span {
+    color: #fff !important;
+}
+.layui-laydate-header {
+    border-bottom: 1px solid #284c95 !important;
+}
+
+.layui-laydate, .layui-laydate-list {
+    background-color: #0c1330 !important;
+}
+.layui-laydate-list {
+    color: #fff;
+}
+
+.layui-laydate-content td {
+    color: #71a0d2 !important;
+}
+
+.layui-laydate .layui-laydate-content .laydate-disabled,
+.layui-laydate .layui-laydate-content .laydate-disabled:hover {
+    color: #666 !important;
+}
+
+.layui-laydate-content tbody tr:hover td {
+    background: #71a0d2;
+    color: #fff !important;
+}
+
+.layui-laydate-header {
+    background: #71a0d2;
+    color: #fff;
+}
+.layui-laydate-content thead tr th{
+    color: #71a0d2;
+}
+.layui-laydate .layui-laydate-content .layui-this{
+    background-color: transparent !important;
+    color: #71a0d2 !important;
+}
+.layui-laydate-content tbody tr:hover .layui-this {
+    background-color: #71a0d2 !important;
+    color: #fff !important;
+}
+.layui-laydate-content .layui-this.laydate-disabled {
+    color: #666 !important;
+}
+.layui-laydate-content .layui-this.laydate-disabled:hover {
+    background: transparent !important;
+}
+
+.layui-laydate-content .laydate-month-list .layui-this {
+    background: #71a0d2 !important;
+    color: #fff !important;
+}
+
+.layui-laydate-content .laydate-month-list li:hover {
+    background: #71a0d2;
+    color: #fff;
+}
+
+.layui-laydate-content .laydate-year-list .layui-this {
+    background: #71a0d2 !important;
+    color: #fff !important;
+}
+
+.layui-laydate-content .laydate-year-list li:hover {
+    background: #71a0d2;
+    color: #fff;
+}
+.my-layui-bg {
+    background: #71a0d2;
+}
+.my-layui-bg td {
+    color: #fff !important;
+}
+.layui-laydate .layui-laydate-content .my-layui-bg .layui-this {
+    color: #fff !important;
+}
+/*学期*/
+#term .laydate-month-list>li {
+    width: 100%;
+    margin: 30px 0;
+    font-size: 18px;
+}
+#term {
+    overflow: hidden;
+}
+
+/*顶部导航*/
+
+.date-con {
+    width: 30%;
+}
+.nav-box .tile {
+    width: 40%;
+    height: 70px;
+    background: url(../images/head.png) no-repeat top center;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    font-size: 24px;
+    line-height: 54px;
+    color: #fff;
+    text-align: center;
+}
+
+.icon-down {
+    background-image: url(../images/sprite.png);
+    background-position: -4px -20px;
+    width: 12px;
+    height: 8px;
+    background-size: 28px 70px;
+    margin-top: 32px;
+    margin-left: 10px;
+}
+
+.icon-line {
+    background: url(../images/splitline.png) center center no-repeat;
+    width: 2px;
+    height: 30px;
+    margin: 18px 40px;
+    background-size: 60%;
+}
+.menu {
+    width: 30%;
+}
+.menu-box {
+    position: relative;
+}
+
+.menu-box .title {
+    color: #8ec8ff;
+    font-size: 17px;
+    line-height: 70px;
+    cursor: pointer;
+}
+
+.menu-box .menu-list-box {
+    position: absolute;
+    top: 52px;
+    right: -41px;
+    z-index: 1;
+    background: url("../images/selector_bg.png") no-repeat top center;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    width: 210px;
+    height: 120px;
+    font-size: 15px;
+    line-height: 28px;
+    color: #fff;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.menu-box-overview .menu-list-box {
+    width: 110px;
+    height: 145px;
+    right: -4px;
+}
+
+.menu-box .menu-list-box .current-color {
+    color: #8ec8ff;
+}
+
+.menu-box .menu-list-box li {
+    cursor: pointer;
+}
+
+.menu-box .menu-list-box li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.menu-box .menu-list-box li:hover {
+    color: #8ec8ff;
+}
+
+.icon-search {
+    width: 16px;
+    height: 16px;
+    right: -12%;
+    background: url(../images/search.png);
+    background-size: 100% 100%;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.menu-box input {
+    color: #8ec8ff;
+    font-size: 16px;
+    margin-left: 20px;
+    width: 180px;
+    margin-top: 22px;
+}
+.menu-box input::-webkit-input-placeholder {
+    color: #8ec8ff;
+    font-size: 16px;
+}
+
+.menu-box input:-moz-placeholder {
+    color: #8ec8ff;
+    font-size: 16px;
+}
+
+.menu-box input::-moz-placeholder {
+    color: #8ec8ff;
+    font-size: 16px;
+}
+
+.menu-box input:-ms-input-placeholder {
+    color: #8ec8ff;
+    font-size: 16px;
+}
+
+/*每项标题*/
+
+.main-box .title {
+    font-size: 17px;
+    color: #8ec8ff;
+    line-height: 34px;
+    padding-top: 10px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.main-box .icon-title {
+    background-image: url(../images/sprite.png);
+    background-position: -16px 0;
+    width: 12px;
+    height: 17px;
+    background-size: 28px 70px;
+    margin-left: 20px;
+    margin-right: 6px;
+    margin-top: 9px;
+}
+
+/*没有数据时显示*/
+.nodata {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.nodata-icon {
+    display: block;
+    width: 102px;
+    height: 66px;
+    background: url(../images/nodata.png) no-repeat;
+    background-size: 100% 100%;
+}
+.nodata p {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+    margin-left: -6px;
+}
+/*适配*/
+@media (min-width: 1561px) {
+    .nav-box .tile {
+        line-height: 70px;
+        height: 90px;
+        font-size: 30px;
+    }
+}
+@media (max-width: 1310px) {
+    .menu-box input {
+        font-size: 12px;
+        margin-left: 10px;
+        margin-top: 26px;
+    }
+    .icon-line {
+        margin-right: 5%;
+    }
+}
+
+
+
+
+
+
+
+.date-layui-con {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1000;
+}
+
+.date-my-layui {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.btns {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.datelist {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.show {
+    display: block;
+}
+
+
+
+#term {
+            width: 272px;
+            height: 275px;
+            background: #0c1330
+        }
+
+        #term ul {
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #term ul li {
+            width: 50%;
+            height: 92px;
+            line-height: 92px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .nowTerm {
+            background: #71a0d2 !important;
+            color: #fff !important;
+            box-sizing: border-box;
+        }

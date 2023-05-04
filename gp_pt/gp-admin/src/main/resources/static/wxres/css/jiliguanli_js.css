@@ -1,0 +1,63 @@
+.big-wrap::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: url(../images/blur-down.png) no-repeat center top;
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+}
+dl {
+    font-size: 12px;
+    color: #888;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 10px solid #f2f2f2;
+}
+dl dt {
+    line-height: 44px;
+    font-size: 14px;
+    color: #323232;
+    border-bottom: 1px solid #f2f2f2;
+}
+dt a {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 20px;
+    overflow: hidden;
+    display: block;
+}
+dt span {
+    font-size:11px;
+    color: #b2b2b2;
+}
+dt span strong {
+    font-weight: bold;
+    font-size: 16px;
+    color: #323232;
+    margin-right: 20px;
+}
+dt i {
+    font-size: 11px;
+    color: #b2b2b2;
+    float: right;
+    padding-right: 16px;
+    background: url(../images/arrow.svg) no-repeat right center;
+    -webkit-background-size: 6px 12px;
+    background-size: 6px 12px;
+}
+dl dd {
+    line-height: 22px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 20px;
+}
+dl dd:first-of-type {
+    margin-top: 10px;
+}
+dl dd i {
+    margin-right: 15px;
+}

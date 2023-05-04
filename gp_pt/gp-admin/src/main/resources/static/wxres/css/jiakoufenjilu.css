@@ -1,0 +1,109 @@
+.tab {
+    width: 100%;
+    height: 44px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.tab div {
+    width: 100%;
+}
+
+.tab span {
+    position: relative;
+    font-weight: bold;
+    font-size: 16px;
+    color: #323232;
+    width: 50%;
+    line-height: 44px;
+    background: #fff;
+    text-align: center;
+}
+
+.tab span.current {
+    color: #00acee;
+}
+
+.tab span.current::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    content: '';
+    width: 94px;
+    border-bottom: 4px solid #00acee;
+}
+
+.occupied {
+    width: 100%;
+    height: 59px;
+    background-color: #fff;
+}
+
+.item {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 20px;
+    border-bottom: 10px solid #f2f2f2;
+}
+.item .top {
+    border-bottom: 1px solid #f2f2f2;
+    line-height: 44px;
+}
+.item .top a {
+    display: block;
+    overflow: hidden;
+}
+
+.item .top strong {
+    float: left;
+    font-weight: bold;
+    font-size: 16px;
+    color: #323232;
+    margin-right: 20px;
+}
+.item .top span {
+    float: left;
+    font-size: 12px;
+    color: #b2b2b2;
+}
+.item .top i {
+    padding-right: 16px;
+    float: right;
+    font-size: 12px;
+    color: #b2b2b2;
+    background: url(../images/arrow.svg) no-repeat right center;
+    -webkit-background-size: 6px 12px;
+    background-size: 6px 12px;
+}
+
+.item .bottom {
+    font-size: 14px;
+    color: #888;
+    line-height: 26px;
+}
+.item .bottom-t {
+    margin-top: 10px;
+}
+.item .bottom i {
+    margin-right: 10px;
+}
+.item .bottom-b {
+    position: relative;
+    margin-bottom: 10px;
+}
+.item .bottom-b .btn {
+    position: absolute;
+    bottom: 1px;
+    right: 0;
+    color: #00acee;
+    font-size: 12px;
+    width: 44px;
+    height: 18px;
+    line-height: 18px;
+    border-radius: 9px;
+    text-align: center;
+    border: 1px solid #00acee;
+}

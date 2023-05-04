@@ -1,0 +1,292 @@
+.more {
+    padding-right: 12px;
+    background: url(../images/arrow.svg) no-repeat right center;
+    -webkit-background-size: 6px 12px;
+    background-size: 6px 12px;
+}
+
+.pull-loading{
+    width:100%;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    align-items: center;
+    justify-content: center;
+    position:fixed;
+    bottom:0px;
+}
+ 
+ 
+     
+#mystartcard {
+    width: 100%;
+    min-width: 320px;
+    position: absolute;
+    left: 0;
+    top: 40px;
+    bottom: 12px;
+    
+    z-index: 1;
+    /* 防止本机Windows上的触摸事件 */
+    -ms-touch-action: none;
+    
+    /* 防止callout tap-hold和文本的选择 */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+    /* 防止文本调整取向变化对web应用程序很有用 */
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+} 
+
+.tab {
+    width: 100%;
+    height: 44px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.tab div {
+    width: 100%;
+}
+
+.tab span {
+    position: relative;
+    font-weight: bold;
+    font-size: 16px;
+    color: #323232;
+    width: 50%;
+    line-height: 44px;
+    background: #fff;
+    text-align: center;
+}
+
+.tab span.current {
+    color: #00acee;
+}
+
+.tab span.current::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    content: '';
+    width: 80px;
+    border-bottom: 4px solid #00acee;
+}
+
+.occupied {
+    width: 100%;
+    height: 59px;
+    background-color: #fff;
+}
+
+/*新建报修*/
+.xinjianbaoxiu {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.xinjianbaoxiu i {
+    line-height: 44px;
+    font-size: 14px;
+    color: #999999;
+}
+
+.xinjianbaoxiu .item input {
+    box-sizing: border-box;
+    padding: 0 15px;
+    width: 100%;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    color: #888;
+}
+
+.xinjianbaoxiu .leixin input {
+    background: url(../images/arrow-down.svg) no-repeat right center;
+    -webkit-background-size: 28px auto;
+    background-size: 28px auto;
+}
+
+.xinjianbaoxiu textarea {
+    box-sizing: border-box;
+    padding: 10px 15px;
+    width: 100%;
+    height: 110px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin: 0;
+    font-size: 14px;
+    color: #888;
+}
+
+.submit-btn {
+    width: 37.3333%;
+    background: #00acee;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    line-height: 40px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px;
+    margin-top: 50px;
+}
+
+/*画廊插件CSS样式*/
+.add-img {
+    background: url(../images/add-img.svg) no-repeat center center;
+    background-size: cover;
+    height: 60px;
+    width: 60px;
+    float: left;
+    margin-top: 10px;
+}
+
+.D13_file {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 60px;
+    width: 60px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    margin-top: 10px;
+}
+
+.imgWrap {
+    width: 100%;
+    position: relative;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.inputFile {
+    width: 100%;
+}
+
+.explain {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: #ccc;
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 6px;
+    float: right;
+    margin-top: 8px;
+}
+
+.has-photo {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    position: relative;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.has-photo:first-of-type {
+    margin-left: 10px;
+}
+
+/*我发起的*/
+.card:nth-of-type(1) {
+    margin-top: 20px;
+}
+
+.card {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 20px;
+    font-size: 14px;
+    line-height: 34px;
+}
+
+.card ul {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+.card i {
+    color: #999;
+    margin-right: 10px;
+}
+
+.card span {
+    color: #555;
+}
+
+.card .imgs {
+    overflow: hidden;
+}
+
+.card img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.wofaqide .has-photo:first-of-type {
+    margin-left: 0;
+}
+
+.wofaqide .demo-gallery {
+    overflow: hidden;
+}
+
+.wofaqide .has-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.wofaqide .has-photo img {
+    margin-bottom: 0;
+}
+
+.has-photo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 11px;
+}
+
+.delPhotoBtn {
+    position: absolute;
+    top: 50%;
+    right: -7px;
+    width: 15px;
+    height: 15px;
+    margin-top: -7px;
+    background: url(../images/delete-img.svg) no-repeat center center;
+    -webkit-background-size: 15px 15px;
+    background-size: 15px 15px;
+    z-index: 50;
+}
+
+.bgbg{
+	background: url(../images/arrow-down.svg) no-repeat right center;
+}
+
+

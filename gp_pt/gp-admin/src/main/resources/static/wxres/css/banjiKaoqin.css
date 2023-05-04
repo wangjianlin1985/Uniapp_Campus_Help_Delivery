@@ -1,0 +1,412 @@
+body {
+    background-color: #f2f2f2;
+}
+
+.tab {
+    width: 100%;
+    height: 44px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.tab div {
+    width: 100%;
+}
+
+.tab span {
+    position: relative;
+    font-weight: bold;
+    font-size: 16px;
+    color: #323232;
+    width: 50%;
+    line-height: 44px;
+    background: #fff;
+    text-align: center;
+}
+
+.tab span.current {
+    color: #00acee;
+}
+
+.tab span.current::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    content: '';
+    width: 80px;
+    border-bottom: 4px solid #00acee;
+}
+
+.occupied {
+    width: 100%;
+    height: 59px;
+    background-color: #fff;
+}
+
+.seek {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.seek ul,
+.seek form,
+.seek {
+    width: 100%;
+}
+
+.seek li {
+    position: relative;
+    box-sizing: border-box;
+    width: 48%;
+    height: 34px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.seek li:nth-of-type(even) {
+    margin-left: 4%;
+}
+
+.seek input {
+    width: 100%;
+    height: 100%;
+    color: #888;
+    padding: 0 15px;
+    box-sizing: border-box;
+    background: url(../images/arrow-down.svg) no-repeat right center;
+    -webkit-background-size: 28px auto;
+    background-size: 28px auto;
+}
+
+.seek input::-webkit-input-placeholder {
+    color: #888;
+}
+
+.seek input::-moz-placeholder {
+    color: #888;
+}
+
+.seek input:-ms-input-placeholder {
+    color: #888;
+}
+
+.seek {
+    background-color: #fff;
+    padding-bottom: 25px;
+    padding-top: 10px;
+}
+form ul {
+    overflow: hidden;
+}
+
+form li {
+    float: left;
+}
+
+/*查询结果*/
+.empty-result {
+    text-align: center;
+}
+.empty-result i {
+    margin-top: 20px;
+    margin-bottom: 14px;
+    display: inline-block;
+    width: 210px;
+    height: 140px;
+    background: url(../images/search-empty.svg) no-repeat center center;
+}
+.empty-result p {
+    color: #b2b2b2;
+    font-size: 12px;
+    padding-bottom: 40px;
+}
+
+.seek-result {
+    margin-top: 15px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.seek-result-card {
+    position: relative;
+    width: 100%;
+    height: 98px;
+    font-size: 14px;
+    color: #888;
+    padding: 10px 3%;
+    line-height: 40px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.seek-result-card span {
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+
+.qj-seek-result span {
+    width: 33.333%;
+}
+
+.seek-result-card span:last-child::after {
+    content: '';
+    border: 1px solid #f2f2f2;
+    width: 94%;
+    position: absolute;
+    top: 50%;
+    left: 3%;
+}
+
+.result-table {
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.result-table .title {
+    height: 33px;
+    line-height: 33px;
+    background: #00acee;
+}
+
+.result-table .title span {
+    float: left;
+    width: 25%;
+    font-size: 13px;
+    color: #fff;
+}
+.qj-result-table .title span {
+    width: 33.333%
+}
+
+.result-table .item {
+    height: 24px;
+    line-height: 24px;
+    border: 1px solid #00acee;
+    border-top: 0 none;
+}
+
+.result-table .item span {
+    float: left;
+    font-size: 12px;
+    color: #888;
+    width: 25%;
+}
+
+.qj-result-table .item span {
+    width: 33.333%;
+}
+
+.btns {
+    margin: 0 auto;
+    width: 256px;
+}
+
+.btns span {
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+    float: left;
+    width: 123px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.btns span:first-child {
+    color: #00acee;
+    border: 1px solid #00acee;
+}
+
+.btns span:last-child {
+    margin-left: 10px;
+    color: #fff;
+    background: #00acee;
+}
+
+.tip {
+    font-size: 11px;
+    color: #ef3a43;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.result-choose-card {
+    padding-bottom: 20px;
+}
+
+.choose-card {
+    color: #999;
+    margin-bottom: 15px;
+    font-size: 14px;
+    padding-bottom: 8px;
+}
+
+.choose-card strong {
+    color: #555;
+}
+
+.choose-card span {
+    float: left;
+}
+
+.choose-card .name,
+.choose-card .detail {
+    padding: 0 3%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.choose-card .detail span {
+    line-height: 25px;
+    float: left;
+    text-align: center;
+    width: 25%;
+}
+
+.choose-card .detail span i {
+    width: 12px;
+    height: 12px;
+    border: 1px solid #888;
+    border-radius: 50%;
+    box-sizing: border-box;
+    float: left;
+    margin-top: 9px;
+    margin-left: 10px;
+}
+.choose-card .detail span s {
+    float: left;
+    margin-left: 10px;
+}
+
+.choose-card .detail .current {
+    color: #00acee;
+}
+
+.choose-card .detail .current i {
+    background: url(../images/choose-on.svg) no-repeat center center;
+    border: 0 none;
+}
+
+.choose-card .name {
+    line-height: 40px;
+    position: relative;
+    padding-top: 4px;
+}
+.choose-card .name i {
+    margin-left: 10px;
+}
+
+.choose-card .name::after {
+    content: '';
+    border: 1px solid #f2f2f2;
+    width: 94%;
+    position: absolute;
+    bottom: 0;
+    left: 3%;
+}
+
+/*-------------------宿舍考勤*/
+
+.kaoqin .choose-card .detail span {
+    line-height: 30px;
+}
+
+.sushe-result-table .title span:nth-of-type(1),
+.sushe-result-table .item span:nth-of-type(1) {
+    width: 14%;
+}
+
+.sushe-result-table .title span:nth-of-type(2),
+.sushe-result-table .item span:nth-of-type(2) {
+    width: 16%;
+}
+
+.sushe-result-table .title span:nth-of-type(3),
+.sushe-result-table .item span:nth-of-type(3) {
+    width: 18%;
+}
+
+.sushe-result-table .title span:nth-of-type(4),
+.sushe-result-table .item span:nth-of-type(4) {
+    width: 28%;
+}
+
+.sushe-result-table .title span:nth-of-type(5),
+.sushe-result-table .item span:nth-of-type(5) {
+    width: 24%;
+}
+
+.susheqj-result-table .title span:nth-of-type(1),
+.susheqj-result-table .item span:nth-of-type(1) {
+    width: 21%;
+}
+.susheqj-result-table .title span:nth-of-type(2),
+.susheqj-result-table .item span:nth-of-type(2) {
+    width: 28%;
+}
+.susheqj-result-table .title span:nth-of-type(3),
+.susheqj-result-table .item span:nth-of-type(3) {
+    width: 30%;
+}
+.susheqj-result-table .title span:nth-of-type(4),
+.susheqj-result-table .item span:nth-of-type(4) {
+    width: 20%;
+}
+
+/*------------------宿舍打分-------------------*/
+.sushedafen {
+    position: relative;
+    box-sizing: border-box;
+}
+.sushedafen::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: url(../images/blur-down.png) no-repeat center top;
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+}
+
+.sushedafen .seek {
+    padding-top: 30px;
+}
+.sushedafen-result .title span:nth-of-type(1),
+.sushedafen-result .item span:nth-of-type(1) {
+    width: 20%;
+}
+.sushedafen-result .title span:nth-of-type(2),
+.sushedafen-result .item span:nth-of-type(2) {
+    width: 15%;
+}
+.sushedafen-result .title span:nth-of-type(3),
+.sushedafen-result .item span:nth-of-type(3) {
+    width: 15%;
+}
+.sushedafen-result .title span:nth-of-type(4),
+.sushedafen-result .item span:nth-of-type(4) {
+    width: 30%;
+}
+.sushedafen-result .item a {
+    float: left;
+    color: #00acee;
+    width: 20%;
+}
+.sushedafen-result .item a span:nth-of-type(1) {
+    color: #00acee;
+    width: 100%;
+}
+.sushedafen-result .title span:nth-of-type(5) {
+    width: 20%;
+}

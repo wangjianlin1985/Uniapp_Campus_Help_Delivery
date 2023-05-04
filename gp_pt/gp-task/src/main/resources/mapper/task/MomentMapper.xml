@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.task.dao.MomentDao">
+
+	<sql id="selectAllVO">
+		select 
+			a.id,
+			a.time,
+			a.user_id as "user.userId",
+			b.user_name as "user.userName",
+			b.avatar as "user.avatar",
+			a.content
+		from task_moment a 
+			left join sys_user b on a.user_id = b.user_id
+	</sql>
+	
+	
+	<select id="list" parameterType="Moment" resultType="Moment" >
+		<include refid="selectAllVO" />
+		where 1 = 1
+		<if test="user != null and user.userId != null">
+			and a.user_id = #{user.userId}
+		</if>
+		order by a.time desc
+	</select>
+	
+	<select id="getById" parameterType="Long" resultType="Moment">
+		<include refid="selectAllVO" /> where a.id = #{id}
+	</select>
+	
+	
+	
+	<insert id="add" parameterType="Moment" useGeneratedKeys="true" keyProperty="id" >
+		insert into task_moment(
+			<if test="user != null and user.userId != null">user_id,</if>
+			<if test="content != null">content,</if>
+			time
+		)values(
+			<if test="user != null and user.userId != null">#{user.userId},</if>
+			<if test="content != null">#{content},</if>
+			sysdate()
+		)
+	</insert>
+	
+	
+	<select id="listImage" parameterType="Long" resultType="MomentImage">
+		select 
+			moment_id as "momentId",
+			path
+		from 
+			task_moment_image 
+		where 
+			moment_id = #{momentId}	
+	</select>
+	
+	<insert id="addImageBatch" parameterType="MomentImage">
+		insert into task_moment_image 
+			(
+				moment_id,
+				path
+			)
+       	values
+       	<foreach collection="list" item="obj" index="index" separator=",">
+           (
+           	  	#{obj.momentId},
+	       		#{obj.path}
+           )
+        </foreach> 
+	</insert>
+	
+
+</mapper>

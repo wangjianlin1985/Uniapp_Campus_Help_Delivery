@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('顶部菜单')" />
+</head>
+<body class="gray-bg">
+    <div class="container-div">
+        <div class="row">
+            
+           <div class="btn-group-sm" id="toolbar" role="group">
+                <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="system:menutop:add">
+                    <i class="fa fa-plus"></i> 新增
+                </a>
+                <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="system:menutop:edit">
+                    <i class="fa fa-edit"></i> 修改
+                </a>
+                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="system:menutop:remove">
+                    <i class="fa fa-remove"></i> 删除
+                </a>
+            </div>
+            
+            <div class="col-sm-12 select-table table-striped">
+                <table id="bootstrap-table" data-mobile-responsive="true"></table>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script th:inline="javascript">
+        var editFlag = [[${@permission.hasPermi('system:menutop:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('system:menutop:remove')}]];
+        var prefix = ctx + "system/menutop";
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+                modalName: "顶部菜单",
+                columns: [{
+                    checkbox: true
+                },
+                {
+                    field: 'menuId',
+                    title: '主键',
+                    visible:false
+                },
+                {
+                    field: 'menuName',
+                    title: '名称'
+                },
+                {
+                	field: 'orderNum',
+                    title: '排序'
+                },
+                {
+                    field: 'remark',
+                    title: '备注'
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-primary btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.menuId + '\')"><i class="fa fa-edit"></i>修改</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.menuId + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        return actions.join('');
+                    }
+                }]
+            };
+            $.table.init(options);
+        });
+
+    </script>
+</body>
+</html>

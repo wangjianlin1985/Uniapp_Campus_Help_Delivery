@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('新增文章分类')" />
+</head>
+
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+		<form class="form-horizontal m" id="form-item-add">
+		
+		    <input type="hidden" name="createBy" th:value="${@permission.getPrincipalProperty('loginName')}" >
+		    
+			<div class="form-group">
+				<label class="col-sm-3 control-label"><span style="color: red; ">*</span>分类名称：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="itemName" id="itemName" required>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label">排序：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="sort" id="sort" required >
+				</div>
+			</div>
+			
+				
+				
+			<div class="form-group">
+				<label class="col-sm-3 control-label">简介：</label>
+				<div class="col-sm-8">
+					<textarea id="remark" name="remark" class="form-control"></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<th:block th:include="include :: footer" />
+	
+	<script type="text/javascript">
+		var prefix = ctx + "article/item";
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	        	$.operate.save(prefix + "/add", $('#form-item-add').serialize());
+	        }
+	    }
+		
+		$("#form-item-add").validate({
+			onkeyup: false,
+			rules:{
+				sort:{
+					digits:true
+				}
+			},
+			messages: {
+		        
+		    },
+		    focusCleanup: true
+		});
+		
+		
+		
+	</script>
+</body>
+</html>

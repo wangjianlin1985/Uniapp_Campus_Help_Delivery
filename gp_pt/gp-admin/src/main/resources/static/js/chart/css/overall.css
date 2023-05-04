@@ -1,0 +1,187 @@
+.main-box .top {
+    width: 100%;
+    height: 60%;
+}
+.top-left,.top-right {
+    width: 30%;
+    height: 100%;
+}
+
+.top-left .item,
+.top-right .item {
+    width: 100%;
+    height: 50%;
+    background: url(../images/border.png) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+.top-center {
+    width: 40%;
+    height: 100%;
+    color: #fff;
+}
+
+.top-center .item {
+    width: 100%;
+    height: 98%;
+    background: url(../images/center.png) no-repeat center center;
+    background-size: 100% 100%;
+    position: relative;
+    margin-top: 6px;
+}
+
+.top-center .item .data {
+    font-size: 15px;
+    width: 88px;
+    text-align: center;
+    position: absolute;
+    line-height: 1.6;
+}
+
+.top-center .item .data-1 {
+    left: 69%;
+    top: 13%;
+}
+
+.top-center .item .data-2 {
+    left: 76%;
+    top: 50%;
+}
+
+.top-center .item .data-3 {
+    left: 43%;
+    top: 80%;
+}
+
+.top-center .item .data-4 {
+    left: 11%;
+    top: 58%;
+}
+
+.top-center .item .data-5 {
+    left: 15%;
+    top: 19%;
+}
+
+.top-center .item .earth {
+    position: absolute;
+    font-size: 1.46435rem;
+    width: 10.78998rem;
+    height: 6.93642rem;
+    line-height: 2.31214rem;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.bottom {
+    width: 100%;
+    height: 40%;
+    margin-bottom: 20px;
+}
+
+.bottom .item {
+  width: 33.333%;
+    height: 100%;
+    background: url(../images/border2.png) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    float: left;
+}
+
+/*评价次数echarts*/
+.pjcs-e, .pjdx-e {
+    width: 100%;
+    height: 100%;
+}
+
+.pjdx-e {
+    height: 96%;
+    padding-top: 2%;
+}
+
+.pjzb-e, .jshyts-e {
+    width: 100%;
+    height: 96%;
+}
+
+.main-box .title {
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+.jshyts-e {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    height: 75%;
+}
+
+.pjfs-e, .pjfszs-e {
+    box-sizing: border-box;
+    padding-top: 6%;
+    width: 100%;
+    height: 88%;
+}
+.dlfb-js-e,
+.dlfb-xs-e {
+  width: 100%;
+}
+.dlfb-js-e {
+  height: 55%;
+}
+
+.dlfb-xs-e {
+  height: 45%;
+}
+
+/* 公告栏样式 */
+#gonggaoTab {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0);
+}
+
+.gonggaoTab-list {
+    background: #0E1229 url(../images/bg_star.png) no-repeat center center!important;
+    transition: all .7s!important;
+}
+
+.gonggaoTab-desc {
+    width: 60%;
+    float: left;
+}
+
+.gonggao-content {
+    float: right;
+    width: 40%;
+    color: #ddd;
+}
+
+.gonggao-content p {
+    width: 100%;
+    -webkit-line-clamp: 9;
+    display: -webkit-box;
+    -webkit-box-orient:vertical;
+    overflow:hidden; 
+    text-overflow: ellipsis;
+}
+
+.gonggaoTab-desc span {
+    display: block;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    color: #ddd;
+}
+
+.gonggaoTab-desc i {
+    margin-left: 5px;
+}
+

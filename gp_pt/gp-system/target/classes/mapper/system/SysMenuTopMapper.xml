@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.system.dao.SysMenuTopDao">
+
+    <sql id="selectMenuVo">
+        select 
+            menu_id as "menuId", 
+            menu_name as "menuName", 
+            order_num as "orderNum", 
+            target, 
+            icon 
+        from sys_menu_top
+    </sql>
+
+
+    <select id="list" resultType="SysMenuTop">
+        <include refid="selectMenuVo"/>
+        where delete_flag = #{deleteFlag}
+        order by order_num desc
+    </select>
+
+
+    <update id="delete" parameterType="SysMenuTop">
+        update 
+            sys_menu_top 
+        set 
+            delete_flag = #{deleteFlag},
+            delete_by = #{deleteBy},
+            delete_time = sysdate() 
+        where menu_id = #{menuId}
+    </update>
+
+    <select id="getById" parameterType="Long" resultType="SysMenuTop">
+        <include refid="selectMenuVo"/>
+        where menu_id = #{menuId}
+    </select>
+
+
+    <update id="update" parameterType="SysMenuTop">
+        update sys_menu_top
+        <set>
+            <if test="menuName != null and menuName != ''">menu_name = #{menuName},</if>
+            <if test="orderNum != null and orderNum != ''">order_num = #{orderNum},</if>
+            <if test="target != null and target != ''">target = #{target},</if>
+            <if test="icon !=null and icon != ''">icon = #{icon},</if>
+            <if test="remark != null and remark != ''">remark = #{remark},</if>
+            <if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+            update_time = sysdate()
+        </set>
+        where menu_id = #{menuId}
+    </update>
+
+    <insert id="add" parameterType="SysMenuTop">
+        insert into sys_menu_top(
+        <if test="menuId != null and menuId != 0">menu_id,</if>
+        <if test="menuName != null and menuName != ''">menu_name,</if>
+        <if test="orderNum != null and orderNum != ''">order_num,</if>
+        <if test="target != null and target != ''">target,</if>
+        <if test="icon != null and icon != ''">icon,</if>
+        <if test="remark != null and remark != ''">remark,</if>
+        <if test="createBy != null and createBy != ''">create_by,</if>
+        create_time
+        )values(
+        <if test="menuId != null and menuId != 0">#{menuId},</if>
+        <if test="menuName != null and menuName != ''">#{menuName},</if>
+        <if test="orderNum != null and orderNum != ''">#{orderNum},</if>
+        <if test="target != null and target != ''">#{target},</if>
+        <if test="icon != null and icon != ''">#{icon},</if>
+        <if test="remark != null and remark != ''">#{remark},</if>
+        <if test="createBy != null and createBy != ''">#{createBy},</if>
+        sysdate()
+        )
+    </insert>
+
+</mapper> 

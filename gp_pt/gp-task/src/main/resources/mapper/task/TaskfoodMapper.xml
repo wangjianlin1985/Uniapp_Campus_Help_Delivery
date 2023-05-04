@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.task.dao.TaskfoodDao">
+
+	<sql id="selectAllVO">
+		select
+			a.id,
+			a.remark,
+			a.user_id as "user.userId",
+			b.user_name as "user.userName",
+			b.avatar as "user.avatar",
+			a.address_id as "address.id",
+			a.address_content as "address.content",
+			a.address_phone as "address.phone",
+			a.money,
+			a.num,
+			a.distance,
+			a.money_paotui as "moneyPaotui",
+			a.money_food as "moneyFood",
+			a.fbsj,
+			a.status,
+			a.jdsj,
+			a.wcsj,
+			a.pty_id as "pty.userId",
+			c.avatar as "pty.avatar",
+			c.user_name as "pty.userName"
+		from task_food_order a
+			left join sys_user b on a.user_id = b.user_id
+			left join sys_user c on a.pty_id = c.user_id
+	</sql>
+
+
+	<select id="list" parameterType="Taskfood" resultType="Taskfood" >
+		<include refid="selectAllVO" />
+		where 1 = 1
+		<if test="user != null and user.userId != null" >
+			and a.user_id = #{user.userId}
+		</if>
+		<if test="user != null and user.userName != null and user.userName != ''" >
+			and b.user_name like concat('%',#{user.userName},'%')
+		</if>
+		<if test="num != null and num != ''">
+			and a.num like concat('%',#{num},'%')
+		</if>
+		<if test="pty != null and pty.userId != null" >
+			and a.pty_id = #{pty.userId}
+		</if>
+		<if test="status != null">
+			and a.status = #{status}
+		</if>
+		<if test="unwc != null and unwc != ''">
+			and a.status in (0,1,2)
+		</if>
+		<if test="start != null and start != ''">
+			and a.fbsj >= #{start}
+		</if>
+		<if test="end != null and end != ''">
+			and a.fbsj &lt; #{end}
+		</if>
+		order by a.fbsj desc
+	</select>
+
+
+	<select id="getById" parameterType="Long" resultType="Taskfood" >
+		<include refid="selectAllVO" />
+		where a.id = #{id}
+	</select>
+	
+	
+	<insert id="add" useGeneratedKeys="true" keyProperty="id" >
+		insert into task_food_order(num,remark,user_id,address_id,address_content,address_phone,money,distance,money_paotui,money_food,fbsj,status)
+		values(#{num},#{remark},#{user.userId},#{address.id},#{address.content},#{address.phone},#{money},#{distance},#{moneyPaotui},#{moneyFood},#{fbsj},0)
+	</insert>
+	
+	<update id="update">
+		update task_food_order 
+		set remark = #{remark},
+			address_id = #{address.id},
+			address_content = #{address.content},
+			address_phone = #{address.phone},
+			money = #{money},
+			distance = #{distance},
+			money_paotui = #{moneyPaotui},
+			money_food = #{moneyFood}
+		where id = #{id}
+	</update>
+	
+	
+	<update id="updateJd">
+		update task_food_order set status = 1,jdsj = #{jdsj},pty_id = #{pty.userId} where id = #{id} and status = 0
+	</update>
+	
+	<update id="updatePs">
+		update task_food_order set status = 2 where id = #{id}
+	</update>
+	
+	<update id="updateWc">
+		update task_food_order set status = 3,wcsj = #{wcsj} where id = #{id}
+	</update>
+	
+	<update id="cancel">
+		update task_food_order set status = 4 where id = #{id}
+	</update>
+	
+	<update id="updateUnjd">
+		update task_food_order set status = 0,jdsj=null,pty_id=null where id = #{id}
+	</update>
+	
+	<delete id="deleteById">
+		delete from task_food_order where id = #{id}
+	</delete>
+	
+</mapper>

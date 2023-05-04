@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.task.dao.ParcelDao">
+
+	<sql id="selectAllVO">
+		select
+			a.id,
+			a.code,
+			a.place,
+			a.remark,
+			a.num,
+			a.user_id as "user.userId",
+			b.user_name as "user.userName",
+			b.avatar as "user.avatar",
+			a.address_id as "address.id",
+			a.address_content as "address.content",
+			a.address_phone as "address.phone",
+			a.weight,
+			a.money,
+			a.fbsj,
+			a.jdsj,
+			a.wcsj,
+			a.pty_id as "pty.userId",
+			c.avatar as "pty.avatar",
+			c.user_name as "pty.userName",
+			a.status
+		from task_parcel a   
+			left join sys_user b on a.user_id = b.user_id
+			left join sys_user c on a.pty_id = c.user_id
+	</sql>
+	
+	<select id="list" parameterType="Parcel" resultType="Parcel" >
+		<include refid="selectAllVO" />
+		where 1 = 1
+		<if test="num != null and num != ''">
+			and a.num like concat('%',#{num},'%')
+		</if>
+		<if test="user != null and user.userName != null and user.userName != ''" >
+			and b.user_name like concat('%',#{user.userName},'%')
+		</if>
+		<if test="user != null and user.userId != null">
+			and a.user_id = #{user.userId}
+		</if>
+		<if test="user != null and user.userName != null and user.userName != '' ">
+			and b.user_name like concat('%',#{user.userName},'%')
+		</if>
+		<if test="pty != null and pty.userId != null">
+			and a.pty_id = #{pty.userId}
+		</if>
+		<if test="status != null ">
+			and a.status = #{status}
+		</if>
+		<if test="unwc != null and unwc != ''">
+			and a.status in (0,1,2)
+		</if>
+		<if test="start != null and start != ''">
+			and a.fbsj >= #{start}
+		</if>
+		<if test="end != null and end != ''">
+			and a.fbsj &lt; #{end}
+		</if>
+		order by a.fbsj desc
+	</select>
+	
+	
+	<select id="getById" parameterType="Long" resultType="Parcel" >
+		<include refid="selectAllVO" />
+		where a.id = #{id}	
+	</select>
+	
+	
+	<insert id="add">
+		insert into task_parcel(num,code,place,remark,user_id,address_id,address_content,address_phone,weight,money,status,fbsj)
+		values(#{num},#{code},#{place},#{remark},#{user.userId},#{address.id},#{address.content},#{address.phone},#{weight},#{money},0,#{fbsj})
+	</insert>
+	
+	
+	<update id="updateJd" >
+		update task_parcel set status = 1,jdsj = #{jdsj},pty_id = #{pty.userId} where id = #{id}  and status = 0
+	</update>
+	
+	
+	<update id="updatePs">
+		update task_parcel set status = 2 where id = #{id}
+	</update>
+	
+	
+	<update id="updateWc">
+		update task_parcel set status = 3,wcsj = #{wcsj} where id = #{id}
+	</update>
+	
+	
+	<update id="cancel">
+		update task_parcel set status = 4 where id = #{id}
+	</update>
+	
+	<update id="updateUnjd">
+		update task_parcel set status = 0,jdsj=null,pty_id=null where id = #{id}
+	</update>
+	
+	<update id="update">
+		update 
+			task_parcel 
+		set 
+			code = #{code},
+			place = #{place},
+			remark = #{remark},
+			address_id = #{address.id},
+			address_content = #{address.content},
+			address_phone = #{address.phone},
+			weight = #{weight},
+			money = #{money}
+	 	where id = #{id}	
+	</update>
+	
+	
+	<delete id="deleteById" parameterType="Long">
+		delete from task_parcel where id = #{id}
+	</delete>
+	
+
+</mapper>

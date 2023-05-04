@@ -1,0 +1,44 @@
+.base_bgc {
+	background-color: #0081FF;
+	color: #ffffff;
+}
+
+.base_fontcolor {
+	color: #0081FF;
+}
+
+.margin-top-min {
+	margin-top: 5px;
+}
+
+/** 文字超出范围省略号 */
+/deep/.diandiandian {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.nodata-img {
+	background-image: url('@/static/images/nodata.png');
+	transform: translateY(50%);
+	height: 600upx; 
+	background-size: 400upx 400upx;
+}
+
+/**
+.cu-form-group>.title{
+	font-size: medium;
+}
+.cu-form-group>input{
+	font-size: medium;
+}
+/deep/view{
+	font-size: medium;
+}
+
+*/
+.one-line {
+	overflow: hidden; 
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

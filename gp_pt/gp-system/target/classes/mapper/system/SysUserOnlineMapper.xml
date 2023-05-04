@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.system.dao.SysUserOnlineDao">
+
+	<resultMap type="SysUserOnline" id="SysUserOnlineResult">
+		<id     property="sessionId"         column="sessionId"         />
+		<result property="loginName"         column="login_name"        />
+		<result property="deptName"          column="dept_name"         />
+		<result property="ipaddr"            column="ipaddr"            />
+		<result property="loginLocation"     column="login_location"    />
+		<result property="browser"           column="browser"           />
+		<result property="os"                column="os"                />
+		<result property="status"            column="status"            />
+		<result property="phonenumber"       column="phonenumber"       />
+		<result property="userName"          column="user_name"         />
+		<result property="userCode"          column="user_code"         />
+		<result property="userType"          column="user_type"         />
+		<result property="idcardno"          column="idcardno"          />
+		<result property="startTimestamp"    column="start_timestamp"   />
+		<result property="lastAccessTime"    column="last_access_time"  />
+		<result property="expireTime"        column="expire_time"       />
+	</resultMap>
+	
+	<sql id="selectOnlineVo">
+       select sessionId,phonenumber,user_type,idcardno,user_code, user_name,login_name, dept_name, ipaddr, login_location, browser, os, status, start_timestamp, last_access_time, expire_time 
+	   from sys_user_online
+    </sql>
+    
+	<select id="selectOnlineById" parameterType="String" resultMap="SysUserOnlineResult">
+		<include refid="selectOnlineVo"/>
+		where sessionid = #{sessionid}
+	</select>
+
+	<insert id="saveOnline" parameterType="SysUserOnline">
+		replace into sys_user_online(user_type,phonenumber,idcardno,user_code,user_name,sessionId, login_name, dept_name, ipaddr, login_location, browser, os, status, start_timestamp, last_access_time, expire_time)
+        values (#{userType},#{phonenumber},#{idcardno},#{userCode},#{userName},#{sessionId}, #{loginName}, #{deptName}, #{ipaddr}, #{loginLocation}, #{browser}, #{os}, #{status}, #{startTimestamp}, #{lastAccessTime}, #{expireTime})
+	</insert>
+	
+ 	<delete id="deleteOnlineById" parameterType="String">
+ 		delete from sys_user_online where sessionId = #{sessionId}
+ 	</delete>
+ 	
+ 	<delete id="deleteOnlineByIds" >
+ 		delete from sys_user_online where sessionId in
+ 		<foreach item="sessionId" collection="array" open="(" separator="," close=")">
+        	#{sessionId}
+        </foreach>
+ 	</delete>
+ 	
+ 	<select id="list" parameterType="SysUserOnline" resultMap="SysUserOnlineResult">
+		<include refid="selectOnlineVo"/>
+		<where>
+			<if test="ipaddr != null and ipaddr != ''">
+				AND ipaddr like concat('%', #{ipaddr}, '%')
+			</if>
+			<if test="loginName != null and loginName != ''">
+				AND login_name like concat('%', #{loginName}, '%')
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectOnlineByExpired" parameterType="String" resultMap="SysUserOnlineResult">
+		<include refid="selectOnlineVo"/> o 
+		WHERE o.last_access_time <![CDATA[ <= ]]> #{lastAccessTime} ORDER BY o.last_access_time ASC
+	</select>
+
+</mapper> 

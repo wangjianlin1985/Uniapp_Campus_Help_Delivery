@@ -1,0 +1,43 @@
+.my-btn {
+    padding-left: 12px;
+}
+.list {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 20px;
+}
+.list-item {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 15px;
+    height: 88px;
+    margin-top: 16px;
+    border-radius: 10px;
+}
+.list-item .left {
+    width: 45px;
+    height: 58px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+.list-item .left img {
+    width: 100%;
+    height: auto;
+}
+.list-item .right {
+    width: 80%;
+    margin-top: 20px;
+}
+.list-item .right .top {
+    font-size: 16px;
+    color: #323232;
+    line-height: 28px;
+}
+.list-item .right .bottom {
+    font-size: 13px;
+    color: #888;
+}
+.list-item .right .top .fr,
+.list-item .right .bottom .fr {
+    color: #00a0f9;
+}

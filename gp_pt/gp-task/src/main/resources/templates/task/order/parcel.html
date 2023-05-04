@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('列表')" />
+</head>
+<!-- 上面引入了shiro的thymeleaf支持 -->
+<!-- 引入用到的css -->
+
+<body class="gray-bg">
+
+	<div class="container-div">
+		<div class="row">
+		
+			<div class="col-sm-12 search-collapse">
+				<form id="role-form">
+					<div class="select-list">
+						<ul>
+							<li>
+								姓名：<input type="text" name="user.userName"/>
+							</li>
+							<li>
+								订单号：<input type="text" name="num"/>
+							</li>
+							<li>
+								状态：<select name="status" >
+                                        <option value="">所有</option>
+                                        <option value="0">待接单</option>
+                                        <option value="1">已接单</option>
+                                        <option value="2">配送中</option>
+                                        <option value="3">已完成</option>
+                                        <option value="4">已取消</option>
+                                    </select>
+							</li>
+							<li class="select-time">
+								<label>下单时间： </label>
+								<input type="text" class="time-input" id="startTime" placeholder="开始时间" name="start"/>
+								<span>-</span>
+								<input type="text" class="time-input" id="endTime" placeholder="结束时间" name="end"/>
+							</li>
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							    <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+		
+	        <div class="col-sm-12 select-table table-striped">
+			    <table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+			
+		</div>
+	</div>
+	
+	
+	<th:block th:include="include :: footer" />
+	
+	
+	<script th:inline="javascript">
+		var prefix = ctx + "task/order";
+		$(function() {
+		    var options = {
+		        url: prefix + "/parcel/list",
+		        modalName: "订单",
+		        removeUrl: prefix + "/parcel/remove",
+		        columns: [{
+		            checkbox: true
+		        },
+		        {
+		            field: 'id',
+		            title: '主键ID'
+		        },
+		        {
+		            field: 'status',
+		            title: '状态',
+		            formatter: function(value,row,index){
+						if(value == 0){
+							return "待接单"
+						} else if (value == 1){
+							return "已接单"
+						} else if (value == 2){
+							return "配送中"
+						} else if (value == 3){
+							return "已完成"
+						} else if (value == 4){
+							return "已取消"
+						}
+					}
+		        },
+		        {
+		            field: 'num',
+		            title: '订单号'
+		        },
+		        {
+		            field: 'remark',
+		            title: '说明'
+		        },
+		        {
+		            field: 'user.userName',
+		            title: '用户名'
+		        },
+		        {
+		            field: 'fbsj',
+		            title: '下单时间'
+		        },
+		        {
+		            field: 'pty.userName',
+		            title: '跑腿员'
+		        },
+		        {
+		            field: 'wcsj',
+		            title: '完成时间'
+		        },
+		        {
+		            title: '操作',
+		            align: 'center',
+		            formatter: function(value, row, index) {
+		                var actions = [];
+		                if(row.status == 1){
+							actions.push('<a class="btn btn-primary btn-xs " href="javascript:void(0)" onclick="updateStatus(\'' + row.id + '\',0)">待接单</a> ');
+		                	actions.push('<a class="btn btn-danger btn-xs " href="javascript:void(0)" onclick="updateStatus(\'' + row.id + '\',2)">配送中</a> ');
+		                	
+		                	actions.push('<a class="btn btn-primary btn-xs " href="javascript:void(0)" onclick="updateStatus(\'' + row.id + '\',4)">取消</a> ');
+						} else if(row.status == 2){
+							actions.push('<a class="btn btn-primary btn-xs " href="javascript:void(0)" onclick="updateStatus(\'' + row.id + '\',0)">待接单</a> ');
+		                	actions.push('<a class="btn btn-danger btn-xs " href="javascript:void(0)"  onclick="updateStatus(\'' + row.id + '\',3)">完成</a> ');
+		                	
+		                	actions.push('<a class="btn btn-primary btn-xs " href="javascript:void(0)" onclick="updateStatus(\'' + row.id + '\',4)">取消</a> ');
+						} 
+						if(row.status == 0){
+							actions.push('<a class="btn btn-primary btn-xs " href="javascript:void(0)" onclick="updateStatus(\'' + row.id + '\',4)">取消</a> ');
+						}
+		                actions.push('<a class="btn btn-danger btn-xs " href="javascript:void(0)" onclick="$.operate.remove(\'' + row.id + '\')"><i class="fa fa-remove"></i>删除</a> ');
+		                return actions.join('');
+		            }
+		        }]
+		    };
+		    $.table.init(options);
+		});
+		
+		function updateStatus(id,status){
+			$.modal.confirm("确定如此操作吗？", function() {
+                var url = prefix + "/updateStatus";
+            	var data = { "id": id,"status": status,"type": 'kd' };
+            	$.operate.submit(url, "post", "json", data);
+        	});
+		}
+		
+	</script>
+</body>
+</html>

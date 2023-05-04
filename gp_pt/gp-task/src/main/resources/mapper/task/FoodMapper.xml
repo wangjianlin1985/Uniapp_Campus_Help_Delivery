@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.task.dao.FoodDao">
+
+	<sql id="selectAllVO">
+		select 
+			id,
+			name,
+			remark,
+			price,
+			sort,
+			cover
+		from task_food
+	</sql>
+	
+	<select id="list" parameterType="Food"  resultType="Food" >
+		<include  refid="selectAllVO" />
+		<if test="name != null and name != '' ">
+			where name like concat('%',#{name},'%')
+		</if>
+		order by sort desc
+	</select>
+	
+	<select id="getById"  parameterType="Long"  resultType="Food" >
+		<include  refid="selectAllVO" />
+		where id = #{id}	
+	</select>
+	
+	
+	<insert id="add">
+		insert into task_food(name,remark,price,sort,cover) values (#{name},#{remark},#{price},#{sort},#{cover})
+	</insert>
+	
+	<update id="update">
+		update 
+			task_food
+		<set> 
+			name = #{name},
+			remark = #{remark},
+			price = #{price},
+			<if test="cover != null and cover != ''">cover = #{cover},</if>	
+			sort = #{sort},
+		</set>	
+		where id = #{id}	
+	</update>
+	
+	<delete id="deleteByIds">
+		delete from task_food
+		where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+	</delete>
+
+</mapper>

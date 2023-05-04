@@ -1,0 +1,95 @@
+.wrap {
+    margin-top: 15px;
+}
+.wrap::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: url(../images/blur-down.png) no-repeat center top;
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+}
+.item {
+    box-sizing: border-box;
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 20px;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.item i {
+    color: #999;
+    margin-right: 40px;
+}
+.item span {
+    color: #666;
+}
+
+.content,
+.reason,
+.shyj {
+    height: auto;
+}
+.content span,
+.reason span,
+.shyj span {
+    display: block;
+}
+.txtarea {
+    height: auto;
+    border-bottom: none;
+}
+
+.txtarea textarea {
+    box-sizing: border-box;
+    width: 100%;
+    height: 69px;
+    padding: 10px;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+}
+
+.btns {
+    margin: 0 auto 30px;
+    display: flex;
+    width: 222px;
+}
+.btns span {
+    width: 100px;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+.pass-btn {
+    background: #00acee;
+    margin-right: 22px;
+}
+.reject-btn {
+    background: #f2395b;
+}
+
+/*志愿者服务审核意见*/
+.fwshyj-wrap .reason {
+    border-bottom: 0 none;
+}
+.shyj-wrap {
+    margin-top: 10px;
+    border-top: 15px solid #f0f0f0;
+}
+.shyj-wrap .item:first-of-type i {
+    margin-right: 26px;
+}
+.my-title::before {
+    left: 20px;
+    top: 22px;
+}
+.my-title {
+    margin-top: 10px;
+    padding-left: 38px;
+}

@@ -1,0 +1,96 @@
+.big-wrap {
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    padding: 35px;
+}
+.big-wrap::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: url(../images/blur-down.png) no-repeat center top;
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+}
+.big-wrap p {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 18px;
+}
+.big-wrap p span {
+    color: #555;
+}
+.big-wrap p span:nth-of-type(1) {
+    margin-right: 30px;
+}
+.big-wrap .fenzhi {
+    margin-bottom: 18px;
+}
+.big-wrap .fenzhi input {
+    border: 1px solid #ccc;
+    width: 125px;
+    height: 28px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    padding: 4px;
+    color: #555;
+}
+.big-wrap i {
+    margin-right: 10px;
+}
+.big-wrap .fenzhi,
+.big-wrap .yuanyin {
+    display: block;
+    font-size: 14px;
+    color: #999;
+}
+.big-wrap .yuanyin i {
+    display: block;
+    margin-bottom: 14px;
+}
+.big-wrap textarea {
+    box-sizing: border-box;
+    display: block;
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 10px;
+    height: 65px;
+    border-radius: 6px;
+    color: #555;
+    font-size: 14px;
+}
+
+.big-wrap .my-btn {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 30px;
+    font-size: 16px;
+    border-radius: 20px;
+}
+
+textarea::-webkit-input-placeholder {
+    color: #ccc;
+    font-size: 12px;
+}
+
+textarea:-moz-placeholder {
+    color: #ccc;
+    font-size: 12px;
+}
+
+textarea::-moz-placeholder {
+    color: #ccc;
+    font-size: 12px;
+}
+
+textarea:-ms-input-placeholder {
+    color: #ccc;
+    font-size: 12px;
+}
+.buttons {
+    margin-top: 30px;
+}

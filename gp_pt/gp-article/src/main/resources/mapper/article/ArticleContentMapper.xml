@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.article.dao.ArticleContentDao">
+
+    <select id="getById" parameterType="Long" resultType="ArticleContent">
+        select 
+            main_id as mainId,
+            content 
+        from article_content    
+        where main_id = #{mainId}
+    </select>
+    
+    
+    <update id="update" parameterType="ArticleContent">
+        update article_content set content = #{content} where main_id = #{mainId}
+    </update>
+    
+    <delete id="deleteById" parameterType="Long">
+        delete from article_content where main_id = #{mainId}
+    </delete>
+    
+    <insert id="add" parameterType="ArticleContent">
+    	insert into article_content(main_id,content) values (#{mainId},#{content})
+    </insert>
+
+</mapper>

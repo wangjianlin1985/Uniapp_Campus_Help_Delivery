@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('用户树选择')" />
+	<th:block th:include="include :: ztree-css" />
+</head>
+<style>
+	body{height:auto;font-family: "Microsoft YaHei";}
+	button{font-family: "SimSun","Helvetica Neue",Helvetica,Arial;}
+</style>
+<body class="hold-transition box box-main">
+	<input id="treeId"   name="treeId"    type="hidden" th:value="${user.userId}"/>
+	<input id="treeName" name="treeName"  type="hidden" th:value="${user.userName}"/>
+	<div class="wrapper"><div class="treeShowHideButton" onclick="$.tree.toggleSearch();">
+		<label id="btnShow" title="显示搜索" style="display:none;">︾</label>
+		<label id="btnHide" title="隐藏搜索">︽</label>
+	</div>
+	<div class="treeSearchInput" id="search">
+		<label for="keyword">关键字：</label><input type="text" class="empty" id="keyword" maxlength="50">
+		<button class="btn" id="btn" onclick="$.tree.searchNode()"> 搜索 </button>
+	</div>
+	<div class="treeExpandCollapse">
+		<a href="#" onclick="$.tree.expand()">展开</a> /
+		<a href="#" onclick="$.tree.collapse()">折叠</a>
+	</div>
+	<div id="tree" class="ztree treeselect"></div>
+	</div>
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: ztree-js" />
+	<script th:inline="javascript">
+		var userType = [[${userType}]];
+		$(function() {
+			var url = ctx + "system/user/treeData?userType=" + userType;
+			var options = {
+		        url: url,
+		        expandLevel: 3,
+		        check: {
+	                enable: true,
+	                chkboxType: { "Y": "", "N": "" }    
+	            },
+	            onCheck : zOnClick
+		    };
+			$.tree.init(options);
+			
+			setTimeout(function() {
+                var treeObj = $.fn.zTree.getZTreeObj("tree");
+                var nodes = treeObj.getCheckedNodes(false);
+                var pid= "," + $("#treeId").val()+","; // 已经选中了的值的ID的集合
+                for(i in nodes){
+                    if (pid.indexOf("," + nodes[i].id + ",") >= 0) {
+                        treeObj.expandNode(nodes[i], true); //展开选中的
+                        treeObj.checkNode(nodes[i], true); 
+                    }
+                }
+            }, 800);
+			
+		});
+		
+		function zOnClick(event, treeId, treeNode) {
+            var treeObj = $.fn.zTree.getZTreeObj("tree");
+            var checkNodes = treeObj.getCheckedNodes();
+            var ids = [];
+            var names = [];
+            for(i in checkNodes){
+            	if(checkNodes[i].attr.type == "USER"){
+            	    ids.push(checkNodes[i].id);
+            	    names.push(checkNodes[i].name);
+            	}
+            }
+            $("#treeId").val(ids.join(","));
+            $("#treeName").val(names.join(","));
+        }
+	</script>
+</body>
+</html>

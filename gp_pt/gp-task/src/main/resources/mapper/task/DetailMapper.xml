@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.task.dao.DetailDao">
+
+	<sql id="selectAllVO">
+		select
+			a.id,
+			a.user_id as userId,
+			a.utype,
+			a.time,
+			a.io,
+			a.type,
+			a.order_id as orderId,
+			a.money,
+			a.remark
+		from task_detail a 
+	</sql>
+	
+	<select id="list" parameterType="Detail" resultType="Detail" >
+		<include refid="selectAllVO" />
+		where a.user_id = #{userId}
+		<if test="utype != null and utype != ''" >
+			and a.utype = #{utype}
+		</if>
+		<if test="io != null and io != ''" >
+			and a.io = #{io}
+		</if>
+		<if test="type != null and type != ''" >
+			and a.type = #{type}
+		</if>
+		order by a.time desc
+	</select>
+	
+	<insert id="add">
+		insert into task_detail(user_id,utype,time,io,type,order_id,money,remark)
+		values (#{userId},#{utype},#{time},#{io},#{type},#{orderId},#{money},#{remark})
+	</insert>
+	
+	<delete id="deleteByOrderId">
+		delete from task_detail where order_id = #{orderId} and type = #{type}
+	</delete>
+
+</mapper>

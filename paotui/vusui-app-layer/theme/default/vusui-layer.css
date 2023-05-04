@@ -1,0 +1,958 @@
+/*!
+ * VusUI [vusui-app-layer] (http://vusui.com | https://vusui.github.io)
+ * Copyright 2017-present The VusUI Authors
+ */
+/* 重置样式 */
+[class*="vus-layer"],
+.vus-layer *,
+.vus-layer view,
+.vus-layer text,
+.vus-layer input,
+.vus-layer button,
+.vus-layer textarea {
+	box-sizing: border-box;
+	outline: 0;
+}
+
+.vus-layer,
+.vus-layer-mask {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+/* 遮罩层 */
+.vus-layer-mask {
+	position: fixed;
+	background-color: rgba(0, 0, 0, .5);
+	pointer-events: auto;
+}
+
+.vus-layer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	pointer-events: none;
+	font-size: 28upx;
+}
+
+.vus-layer.layer-drawer {
+	height: 100%;
+	display: block;
+	overflow: hidden;
+}
+
+/* 标题 */
+.vus-layer-title {
+	line-height: 1;
+	padding: 36upx 36upx 0;
+	font-size: 36upx;
+	font-weight: 700;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* 按钮 */
+.vus-layer-button {
+	height: 84upx;
+	line-height: 84upx;
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+	position: relative;
+	text-align: center;
+}
+
+.vus-layer-button::after {
+	height: 200%;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 0;
+	border-top: 1upx solid #e3e3e3;
+	transform-origin: 0 0;
+	pointer-events: none;
+	transform: scaleY(.5);
+}
+
+.vus-layer-button .btns {
+	width: 100%;
+	max-width: 100%;
+	flex-basis: 0;
+	flex-grow: 1;
+	position: relative;
+	font-size: 30upx;
+	transition: all .3s ease;
+}
+
+.vus-layer-button .btns+.btns::after {
+	width: 200%;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 0;
+	border-left: 1upx solid #e3e3e3;
+	transform-origin: 0 0;
+	pointer-events: none;
+	transform: scaleX(.5);
+}
+
+.vus-layer-button .btns-0 {
+	color: #09f;
+}
+
+.vus-layer-button .btns:active {
+	opacity: 0.8;
+}
+
+/* 图标 */
+.vus-layer-icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 36upx;
+}
+
+.vus-layer-icon.is-title {
+	padding-top: 24upx;
+}
+
+.vus-layer-icon .icons {
+	font-size: 60upx;
+}
+
+.vus-layer-icon .vli-icon-0 {
+	color: #2a4;
+}
+
+.vus-layer-icon .vli-icon-1 {
+	color: #e83;
+}
+
+.vus-layer-icon .vli-icon-2 {
+	color: #d54;
+}
+
+.vus-layer-icon .vli-icon-3 {
+	color: #3ae;
+}
+
+.vus-layer-icon .vli-icon-4 {
+	color: #07e;
+}
+
+.vus-layer-icon .vli-icon-5 {
+	color: #f00;
+}
+
+/* 边框 */
+.vus-layer-border {
+	border: 1upx solid rgba(0, 0, 0, .1);
+	box-shadow: 1upx 1upx 10upx rgba(0, 0, 0, .15) !important;
+}
+
+
+/* 内容 */
+.vus-layer-content {
+	position: relative;
+	text-align: center;
+	overflow: hidden;
+}
+
+.vus-layer-content.is-title-icon {}
+
+.vus-layer-content.left {
+	text-align: left;
+}
+
+.vus-layer-content.right {
+	text-align: right;
+}
+
+/* 提示框 */
+.vus-layer-alert,
+.vus-layer-prompt,
+.vus-layer-page {
+	min-width: 540upx;
+	max-width: 80%;
+	background-color: #fff;
+	border-radius: 26upx;
+	box-shadow: 0 0 20upx rgba(0, 0, 0, .3);
+	pointer-events: auto;
+	position: relative;
+}
+
+.vus-layer-alert .vus-layer-content,
+.vus-layer-prompt .vus-layer-content {
+	padding: 40upx;
+}
+
+.vus-layer-alert .vus-layer-content.is-title-icon {
+	padding: 24upx 36upx;
+}
+
+
+/* msg */
+.vus-layer-msg {
+	min-width: 100upx;
+	max-width: 540upx;
+	background-color: rgba(0, 0, 0, .6);
+	border-radius: 8upx;
+	pointer-events: auto;
+	position: relative;
+}
+
+.vus-layer-msg .vus-layer-content {
+	line-height: 1.3;
+	padding: 20upx 40upx;
+	color: #fff;
+}
+
+.vus-layer-msg .vus-layer-content.is-icon {
+	padding: 15upx 40upx 20upx;
+}
+
+.vus-layer-msg .vus-layer-close {
+	position: absolute;
+	top: 10upx;
+	right: 10upx;
+	z-index: 3;
+	font-size: 22upx;
+	color: rgba(255, 255, 255, .9);
+}
+
+.vus-layer-msg .vus-layer-icon {
+	padding-top: 24upx;
+}
+
+.vus-layer-msg .vus-layer-icon .icons {
+	font-size: 46upx;
+	color: #fff;
+}
+
+/* prompt */
+.vus-layer-prompt .vus-layer-input {
+	width: 100%;
+	height: auto;
+	line-height: 28upx;
+	padding: 18upx;
+	text-align: left;
+	color: #333;
+	font-size: 28upx;
+	background-color: #fff;
+	border: 1upx solid #eee;
+	border-radius: 8upx;
+	position: relative;
+	resize: none;
+	appearance: none;
+	transition: border-color .25s ease-in-out, box-shadow .25s cubic-bezier(.35, .81, .45, 1.47);
+}
+
+.vus-layer-prompt .vus-layer-input-textarea {
+	min-height: 120upx;
+	line-height: 1.3;
+	padding: 15upx;
+}
+
+.vus-layer-prompt .vus-layer-input.focus,
+.vus-layer-prompt .vus-layer-input:not([disabled]):not(.disabled):active {
+	outline: 0;
+	box-shadow: 0 0 0 8upx rgba(153, 153, 153, .1);
+	z-index: 2;
+}
+
+.vus-layer-prompt .vus-layer-input-count {
+	padding: 14upx 4upx 0;
+	line-height: 1;
+	font-size: 26upx;
+	color: #555;
+	text-align: right;
+}
+
+.vus-layer-prompt .vus-layer-input-count-color {
+	color: #f00;
+	padding: 0 6upx;
+}
+
+.vus-layer-prompt .vus-layer-prompt-text {
+	padding-top: 16upx;
+	font-size: 26upx;
+}
+
+
+/* 抽屉 */
+.vus-layer-drawer {
+	position: absolute;
+	pointer-events: auto;
+	background-color: #fff;
+	overflow: hidden;
+}
+
+.vus-layer-drawer .vus-layer-wrapper {
+	position: relative;
+	overflow: hidden;
+}
+
+.vus-layer-drawer .vus-layer-scroll {
+	overflow-y: auto;
+}
+
+.vus-layer-drawer .vus-layer-content {
+	text-align: left;
+}
+
+.vus-layer-drawer .vus-layer-button {
+	width: 100%;
+	height: 94upx;
+	line-height: 94upx;
+	pointer-events: auto;
+	background-color: #fff;
+}
+
+.vus-layer-drawer-left,
+.vus-layer-drawer-right {
+	height: 100%;
+	max-width: 85%;
+	top: 0;
+	bottom: 0;
+}
+
+.vus-layer-drawer-top,
+.vus-layer-drawer-bottom {
+	width: 100%;
+	max-height: 85%;
+	left: 0;
+	right: 0;
+}
+
+.vus-layer-drawer-left {
+	left: 0;
+}
+
+.vus-layer-drawer-right {
+	right: 0;
+}
+
+.vus-layer-drawer-top {
+	top: 0;
+}
+
+.vus-layer-drawer-bottom {
+	bottom: 0;
+}
+
+
+/* page */
+.vus-layer-page {
+	min-width: 600upx;
+	max-width: 85%;
+	position: relative;
+}
+.vus-layer-page .vus-layer-title {
+	padding-bottom: 10upx;
+}
+.vus-layer-page .vus-layer-close {
+	position: absolute;
+	top: -20upx;
+	right: -20upx;
+	z-index: 3;
+}
+.vus-layer-page .vus-layer-close-icon {
+	line-height: 1;
+	background-color: rgba(255,255,255,.8);
+	font-size: 48upx;
+	border-radius: 50%;
+	text-shadow: 0 0 8upx rgba(255,255,255,.8);
+	color: #555;
+}
+.vus-layer-page .vus-layer-scroll {
+	max-height: calc(80vh - 160upx);
+	overflow-y: auto;
+}
+
+/* photos */
+.vus-layer-photos {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	pointer-events: none;
+}
+.vus-layer-photos .vus-layer-close {
+	position: absolute;
+	left: 50%;
+	bottom: 50upx;
+	z-index: 3;
+	transform: translateX(-50%);
+	pointer-events: auto;
+}
+.vus-layer-photos .vus-layer-close-icon {
+	font-size: 60upx;
+	color: #f00;
+}
+.vus-layer-photos .vus-layer-photos-title {
+	position: absolute;
+	top: 90upx;
+	left: 40upx;
+	right: 40upx;
+	z-index: 3;
+	color: #fff;
+	font-size: 32upx;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.2);
+}
+.vus-layer-photos .vus-layer-photos-number {
+	position: absolute;
+	left: 50%;
+	bottom: 140upx;
+	z-index: 3;
+	color: #fff;
+	font-size: 32upx;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	transform: translateX(-50%);
+	text-shadow: 1px 1px 1px rgba(0,0,0,.2);
+}
+.vus-layer-photos .vus-layer-photos-content {
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.vus-layer-photos .vus-layer-photos-swiper {
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.vus-layer-photos .vus-layer-photos-swiper-item {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.vus-layer-photos .vus-layer-photos-content img,
+.vus-layer-photos .vus-layer-photos-content image,
+.vus-layer-photos .vus-layer-photos-image {
+	pointer-events: auto;
+	width: 100%;
+	display: block;
+}
+
+
+/* loading */
+.vus-layer-loading {
+	background-color: rgba(0, 0, 0, .6);
+	border-radius: 8upx;
+	pointer-events: auto;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.vus-layer-loading .vus-layer-close {
+	position: absolute;
+	top: 12upx;
+	right: 12upx;
+	z-index: 3;
+	font-size: 22upx;
+	color: rgba(255, 255, 255, .6);
+}
+
+.vus-layer-loading .vus-layer-padding {
+	min-width: 100upx;
+	min-height: 100upx;
+	padding: 20upx;
+	text-align: center;
+}
+
+.vus-layer-loading .vus-layer-padding.is-noicon {
+	min-height: auto;
+}
+
+.vus-layer-loading .vus-layer-loading-icon {
+	width: 80upx;
+	height: 80upx;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.vus-layer-loading .vus-layer-content {
+	color: rgba(255, 255, 255, .8);
+	font-size: 26upx;
+	padding-top: 10upx;
+	line-height: 1.3;
+	text-align: center;
+}
+
+/* type0 */
+.vus-layer-loading .vus-layer-loading-0 {
+	width: 70upx;
+	height: 70upx;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	animation: VusLoadTypeSpin0 1s 0s step-end infinite;
+}
+@keyframes VusLoadTypeSpin0 {
+		0% {
+			transform: rotate(0deg);
+		}
+
+		8% {
+			transform: rotate(30deg);
+		}
+
+		16% {
+			transform: rotate(60deg);
+		}
+
+		24% {
+			transform: rotate(90deg);
+		}
+
+		32% {
+			transform: rotate(120deg);
+		}
+
+		40% {
+			transform: rotate(150deg);
+		}
+
+		48% {
+			transform: rotate(180deg);
+		}
+
+		56% {
+			transform: rotate(210deg);
+		}
+
+		64% {
+			transform: rotate(240deg);
+		}
+
+		73% {
+			transform: rotate(270deg);
+		}
+
+		82% {
+			transform: rotate(300deg);
+		}
+
+		91% {
+			transform: rotate(330deg);
+		}
+
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+
+/* type1 */
+.vus-layer-loading .vus-layer-loading-1 {
+	width: 70upx;
+	height: 70upx;
+	border-radius: 50%;
+	border: 6upx solid rgba(255, 255, 255, .3);
+	border-top: 6upx solid rgba(255, 255, 255, .95);
+	animation: VusLoadTypeSpin1 1s linear infinite;
+}
+
+@keyframes VusLoadTypeSpin1 {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* type2 */
+.vus-layer-loading .vus-layer-loading-2 {
+	width: 70upx;
+	height: 70upx;
+	position: relative;
+}
+
+.vus-layer-loading .vus-layer-loading-2::before,
+.vus-layer-loading .vus-layer-loading-2::after {
+	content: '';
+	width: inherit;
+	height: inherit;
+	border-radius: 50%;
+	background-color: #fff;
+	opacity: 0.6;
+	position: absolute;
+	top: 0;
+	left: 0;
+	animation: VusLoadTypeSpin2 2.0s infinite ease-in-out;
+}
+
+.vus-layer-loading .vus-layer-loading-2::after {
+	animation-delay: -1.0s;
+}
+
+@keyframes VusLoadTypeSpin2 {
+	0%,
+	100% {
+		transform: scale(0);
+	}
+	50% {
+		transform: scale(1);
+	}
+}
+
+
+/* type3 */
+.vus-layer-loading .vus-layer-loading-3 {
+    height: 70upx;
+    width: 70upx;
+    border-radius: 50%;
+    border: 6upx solid rgba(255,255,255,.9);
+    border-bottom-color: transparent;
+    animation: VusLoadTypeSpin3 0.75s linear infinite;
+}
+@keyframes VusLoadTypeSpin3 {
+    0% {
+		transform: rotate(0deg);
+	}
+    100% {
+		transform: rotate(360deg);
+	}
+}
+
+
+/* 动画 */
+.vus-layer-anim {
+	animation-duration: 260ms;
+	animation-timing-function: ease-out;
+	animation-fill-mode: both;
+}
+
+/* 0 */
+.vus-layer-anim-0 {
+	animation-name: VusBounceIn;
+}
+
+.vus-layer-anim-close-0 {
+	animation-name: VusBounceOut;
+}
+
+/* 1 */
+.vus-layer-anim-1 {
+	animation-name: VusFadeIn;
+}
+
+.vus-layer-anim-close-1 {
+	animation-name: VusFadeOut;
+}
+
+/* 从左 */
+.vus-layer-anim-2 {
+	animation-name: VusLeftSlideIn;
+}
+
+.vus-layer-anim-close-2 {
+	animation-name: VusLeftSlideOut;
+}
+
+/* 从上 */
+.vus-layer-anim-3 {
+	animation-name: VusUpSlideIn;
+}
+
+.vus-layer-anim-close-3 {
+	animation-name: VusUpSlideOut;
+}
+
+/* 从右 */
+.vus-layer-anim-4 {
+	animation-name: VusRightSlideIn;
+}
+
+.vus-layer-anim-close-4 {
+	animation-name: VusRightSlideOut;
+}
+
+/* 从下 */
+.vus-layer-anim-5 {
+	animation-name: VusDownSlideIn;
+}
+
+.vus-layer-anim-close-5 {
+	animation-name: VusDownSlideOut;
+}
+
+/* 由大至小 */
+.vus-layer-anim-6 {
+	animation-name: VusMaxZoomIn;
+}
+
+.vus-layer-anim-close-6 {
+	animation-name: VusMaxZoomOut;
+}
+
+/* Bounce */
+@keyframes VusBounceIn {
+	0% {
+		opacity: 0;
+		transform: scale(.5);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes VusBounceOut {
+	100% {
+		opacity: 0;
+		transform: scale(.5);
+	}
+	30% {
+		transform: scale(1.1);
+	}
+	0% {
+		transform: scale(1);
+	}
+}
+
+/* Fade */
+@keyframes VusFadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes VusFadeOut {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+/* 从左in */
+@keyframes VusLeftSlideIn {
+	0% {
+		opacity: 0;
+		transform: translate3d(-100%, 0, 0);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+/* 从左out */
+@keyframes VusLeftSlideOut {
+	0% {
+		opacity: 1;
+		transform: none;
+	}
+	100% {
+		opacity: 0;
+		transform: translate3d(-100%, 0, 0);
+	}
+}
+
+/* 从上in*/
+@keyframes VusUpSlideIn {
+	0% {
+		opacity: 0;
+		transform: translate3d(0, -100%, 0);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+/* 从上out */
+@keyframes VusUpSlideOut {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: translate3d(0, -100%, 0);
+	}
+}
+
+/* 从右in*/
+@keyframes VusRightSlideIn {
+	0% {
+		opacity: 0;
+		transform: translate3d(100%, 0, 0);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+/* 从右out */
+@keyframes VusRightSlideOut {
+	0% {
+		opacity: 1;
+		transform: none;
+	}
+	100% {
+		opacity: 0;
+		transform: translate3d(100%, 0, 0);
+	}
+}
+
+/* 从下in */
+@keyframes VusDownSlideIn {
+	0% {
+		opacity: 0;
+		transform: translate3d(0, 100%, 0);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+/* 从下out */
+@keyframes VusDownSlideOut {
+	0% {
+		opacity: 1;
+		transform: none;
+	}
+	100% {
+		opacity: 0;
+		transform: translate3d(0, 100%, 0);
+	}
+}
+
+/* 由大到小(显示) */
+@keyframes VusMaxZoomIn {
+	0% {
+		opacity: 0;
+		transform: scale3d(1.2, 1.2, 1.2);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+/* 由大到小(隐藏) */
+@keyframes VusMaxZoomOut {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: scale3d(1.2, 1.2, 1.2);
+	}
+}
+
+
+/* 字体图标 */
+@font-face {
+	font-family: "vusuiAppLayer";
+	src: url("data:application/x-font-woff2;charset=utf-8;base64,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") format("woff2");
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="vli-"],
+[class*=" vli-"] {
+	font-family: 'vusuiAppLayer' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale
+}
+
+.vli-icon-0:before,
+.vli-success:before {
+	content: "\ec44";
+}
+
+.vli-success-o:before {
+	content: "\ec47";
+}
+
+.vli-icon-1:before,
+.vli-warning:before {
+	content: "\ec43";
+}
+
+.vli-warning-o:before {
+	content: "\ec45";
+}
+
+.vli-icon-2:before,
+.vli-error:before {
+	content: "\ec42";
+}
+
+.vli-error-o:before {
+	content: "\ec3f";
+}
+
+.vli-icon-3:before,
+.vli-info:before {
+	content: "\ec41";
+}
+
+.vli-info-o:before {
+	content: "\ec3e";
+}
+
+.vli-icon-4:before,
+.vli-help:before {
+	content: "\ec3d";
+}
+
+.vli-help-o:before {
+	content: "\ec40";
+}
+
+.vli-icon-5:before,
+.vli-ban:before {
+	content: "\ec48";
+}
+
+.vli-ban-o:before {
+	content: "\ec46";
+}
+
+.vli-close:before {
+	content: "\ec49";
+}

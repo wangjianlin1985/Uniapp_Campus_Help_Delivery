@@ -1,0 +1,160 @@
+
+.tab {
+    width: 100%;
+    height: 44px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.tab div {
+    width: 100%;
+}
+
+.tab span {
+    position: relative;
+    font-weight: bold;
+    font-size: 16px;
+    color: #323232;
+    width: 50%;
+    line-height: 44px;
+    background: #fff;
+    text-align: center;
+}
+
+.tab span.current {
+    color: #00acee;
+}
+
+.tab span.current::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    content: '';
+    width: 80px;
+    border-bottom: 4px solid #00acee;
+}
+
+.occupied {
+    width: 100%;
+    height: 59px;
+    background-color: #fff;
+}
+
+/*新建申请*/
+.info {
+    width: 100%;
+    font-size: 14px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-item div {
+    margin-bottom: 20px;
+    flex-shrink: 0;
+    display: flex;
+}
+
+.info i {
+    width: 42px;
+    line-height: 28px;
+    color: #999;
+}
+
+.info input {
+    box-sizing: border-box;
+    padding-left: 4px;
+    height: 28px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 110px;
+    flex-shrink: 0;
+    background: url(../images/arrow-down.svg) no-repeat right center;
+    -webkit-background-size: 22px auto;
+    background-size: 22px auto;
+    color: #888;
+}
+
+.info .name input,
+.info .grade input{
+    background: none;
+}
+
+.service {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.service input {
+    flex: 1;
+}
+
+textarea {
+    box-sizing: border-box;
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #888;
+}
+
+.submit {
+    display: block;
+    margin: 40px auto;
+    width: 140px;
+    height: 40px;
+    border-radius: 20px;
+    background: #00acee;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+}
+
+/*卡片样式*/
+.big-wrap {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 25px 30px 0;
+}
+
+.card {
+    font-size: 14px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.card {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 20px;
+    font-size: 14px;
+    line-height: 34px;
+}
+.card ul {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.card i {
+    color: #999;
+    margin-right: 10px;
+}
+.card span {
+    color: #555;
+}
+@media screen and (min-width: 411px) {
+    .info input {
+        width: 126px;
+    }
+}

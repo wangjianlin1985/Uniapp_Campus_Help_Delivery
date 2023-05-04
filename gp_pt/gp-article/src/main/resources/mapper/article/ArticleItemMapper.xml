@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.article.dao.ArticleItemDao">
+
+    <resultMap type="ArticleItem" id="ArticleItemResult">
+        <id     property="itemId"     column="item_id"     />
+        <result property="itemName"   column="item_name"   />
+        <result property="remark"     column="remark"      />
+        <result property="sort"       column="sort"        />
+    </resultMap>
+
+
+    <sql id="selectArticleItemVo">
+        select item_id, sort,  item_name, remark
+        from article_item
+    </sql>
+    
+    
+    
+    <select id="list" parameterType="ArticleItem" resultMap="ArticleItemResult">
+        <include refid="selectArticleItemVo"/>
+        where delete_flag = #{deleteFlag}
+        <if test="itemName != null and '' != itemName">
+        	and item_name = #{itemName}
+        </if>
+        order by sort desc
+    </select>
+    
+    <select id="getById" parameterType="Long" resultMap="ArticleItemResult">
+        <include refid="selectArticleItemVo"/> where item_id = #{itemId}
+    </select>
+
+
+    <update id="deleteBatchMapArray" parameterType="java.util.Map">
+ 		update 
+            article_item 
+        set 
+            delete_flag = #{deleteFlag},
+            delete_by = #{deleteBy},
+            delete_time = sysdate() 
+        where item_id in 
+        <foreach item="itemId" collection="array" open="(" separator="," close=")">
+        	#{itemId}
+        </foreach>
+ 	</update>
+    
+    
+    <update id="update" parameterType="ArticleItem">
+        update article_item
+        <set>
+            <if test="itemId != null and itemId != ''">item_id = #{itemId},</if>
+            <if test="itemName != null and itemName != ''">item_name = #{itemName},</if>
+            <if test="remark != null and remark != ''">remark = #{remark},</if>
+            <if test="sort != null">sort = #{sort},</if>
+            <if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+            update_time = sysdate()
+        </set>
+        where item_id = #{itemId}
+    </update>
+    
+    <insert id="add" parameterType="ArticleItem" useGeneratedKeys="true" keyProperty="itemId">
+        insert into article_item(
+            <if test="itemId != null and itemId != 0">item_id,</if>
+            <if test="itemName != null and itemName != ''">item_name,</if>
+            <if test="sort != null">sort,</if>
+            <if test="remark != null and remark != ''">remark,</if>
+            <if test="createBy != null and createBy != ''">create_by,</if>
+            create_time
+        )values(
+            <if test="itemId != null and itemId != 0">#{itemId},</if>
+            <if test="itemName != null and itemName != ''">#{itemName},</if>
+            <if test="sort != null">#{sort},</if>
+            <if test="remark != null and remark != ''">#{remark},</if>
+            <if test="createBy != null and createBy != ''">#{createBy},</if>
+            sysdate()
+        )
+    </insert>
+    
+
+</mapper>

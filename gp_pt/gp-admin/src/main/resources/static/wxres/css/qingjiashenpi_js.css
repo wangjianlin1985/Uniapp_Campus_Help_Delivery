@@ -1,0 +1,148 @@
+.tab {
+    width: 100%;
+    height: 44px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.tab div {
+    width: 100%;
+}
+
+.tab span {
+    position: relative;
+    font-weight: bold;
+    font-size: 16px;
+    color: #323232;
+    width: 50%;
+    line-height: 44px;
+    background: #fff;
+    text-align: center;
+}
+
+.tab span.current {
+    color: #00acee;
+}
+
+.tab span.current::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    content: '';
+    width: 80px;
+    border-bottom: 4px solid #00acee;
+}
+
+.occupied {
+    width: 100%;
+    height: 59px;
+    background-color: #fff;
+}
+
+.wrap ul {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 20px;
+    font-size: 14px;
+    color: #999;
+    display: flex;
+    border-bottom: 1px solid #f0f0f0;
+}
+.wrap ul li {
+    line-height: 44px;
+    text-align: center;
+    flex: 1;
+}
+.wrap ul li a {
+    display: block;
+    color: #00acee;
+    font-weight: bold;
+}
+.wrap ul li a::after {
+    display: none;
+}
+.batch-btn {
+    height: 44px;
+    width: 100%;
+    line-height: 44px;
+    font-size: 16px;
+    color: #00acee;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    z-index: 9;
+}
+.batch-btn::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: url(../images/blur-top.png) no-repeat center top;
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+}
+.btns {
+    overflow: hidden;
+}
+.btns span {
+    width: 25%;
+    float: left;
+    text-align: center;
+}
+.ds-wrap ul {
+    position: relative;
+}
+.choose {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 30px;
+    height: 30px;
+    background: url(../images/check.svg) no-repeat center center;
+    -webkit-background-size: 30px 30px;
+    background-size: 30px 30px;
+    z-index: 10;
+}
+.choose.on {
+    background-image: url(../images/check-on.svg);
+}
+.wrap a {
+    display: block;
+    position: relative;
+}
+.wrap a::after {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translate(0, -50%);
+    content: '';
+    width: 7px;
+    height: 15px;
+    background: url(../images/arrow.svg) no-repeat center center;
+    -webkit-background-size: 7px auto;
+    background-size: 7px auto;
+}
+.wrap a ul li:last-of-type {
+    color: #323232;
+}
+.mask-two{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+.mask {
+    background: none;
+    z-index: 21;
+}

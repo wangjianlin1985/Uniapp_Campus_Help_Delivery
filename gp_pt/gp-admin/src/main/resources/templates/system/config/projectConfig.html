@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:include="include :: header('项目配置')" />
+<th:block th:include="include :: layui-transfer-css" />
+</head>
+<body class="white-bg">
+	
+		<div class="col-xs-6">
+			<form class="form-horizontal m" id="sysName" name="sysName" th:object="${sysNameConfig}">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">项目名称：</label>
+					<div class="col-sm-5">
+						<input id="configId"   name="configId"  th:field="*{configId}"    type="hidden" />
+						<input id="configName" name="configName" th:field="*{configName}" type="hidden" />
+						<input id="configKey"  name="configKey"  th:field="*{configKey}"  type="hidden" />
+						<input id="configValue" name="configValue" th:field="*{configValue}" class="form-control" type="text" required>
+					</div>
+					<div class="col-sm-3">
+						 <button type="button" class="btn btn-sm btn-primary" onclick="saveSysName()" ><i class="fa fa-check"></i>保 存</button>
+					</div>
+				</div>
+			</form>
+			
+			
+			<form class="form-horizontal m" id="sysCopyright" name="sysCopyright" th:object="${sysCopyrightConfig}">
+				<div class="form-group">
+					<label class="col-sm-3 control-label">技术支持：</label>
+					<div class="col-sm-5">
+						<input id="configId"   name="configId"  th:field="*{configId}"    type="hidden" />
+						<input id="configName" name="configName" th:field="*{configName}" type="hidden" />
+						<input id="configKey"  name="configKey"  th:field="*{configKey}"  type="hidden" />
+						<input id="configValue" name="configValue" th:field="*{configValue}" class="form-control" type="text" required>
+					</div>
+					<div class="col-sm-3">
+						 <button type="button" class="btn btn-sm btn-primary" onclick="saveSysCopyright()" ><i class="fa fa-check"></i>保 存</button>
+					</div>
+				</div>
+			</form>
+			
+			<form class="form-horizontal m" id="sysLogo" name="sysLogo" th:object="${sysLogoConfig}">	
+				<div class="form-group">
+				    <label class="col-sm-3 control-label">LOGO：</label>
+					<input id="configId"    name="configId"   th:field="*{configId}"      type="hidden" />
+					<input id="configName"  name="configName"  th:field="*{configName}"   type="hidden" />
+					<input id="configKey"   name="configKey"   th:field="*{configKey}"    type="hidden" />
+					<input id="logoConfigValue" name="configValue" th:field="*{configValue}" type="hidden" />
+					<div class="col-sm-5" >
+	                    <img th:src="@{${@config.getKey('sys.logo')}}" id="logoImage" style="width:170px;height:50px;" onclick="$('#logo').click();"  >
+	                </div>
+	                <input type="file" class="hidden" id="logo" name="logo" accept="image/*"  onchange="uploadPhone()" />
+	                <div class="col-sm-3">
+                         <button type="button" class="btn btn-sm btn-primary" onclick="saveSysLogo()" ><i class="fa fa-check"></i>保 存</button>
+                    </div>
+				</div>
+			</form>
+			
+			<form class="form-horizontal m" id="wxlonginbg" name="sysLogo2" th:object="${applonginbg}">    
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">移动登录背景：</label>
+                    <input id="configId"    name="configId"   th:field="*{configId}"      type="hidden" />
+                    <input id="configName"  name="configName"  th:field="*{configName}"   type="hidden" />
+                    <input id="configKey"   name="configKey"   th:field="*{configKey}"    type="hidden" />
+                    <input id="logoConfigValue2" name="configValue" th:field="*{configValue}" type="hidden" />
+                    <div class="col-sm-5" >
+                        <img th:src="@{${@config.getKey('app_login_bg')}}" id="logoImage2" style="width:170px;height:120px;" onclick="$('#logo2').click();"  >
+                    </div>
+                    <input type="file" class="hidden" id="logo2" name="logo" accept="image/*"  onchange="uploadPhoto2()" />
+                    <div class="col-sm-3">
+                         <button type="button" class="btn btn-sm btn-primary" onclick="saveWXLoginBG()" ><i class="fa fa-check"></i>保 存</button>
+                    </div>
+                </div>
+            </form>
+			
+			
+		</div>
+		
+	
+		
+		
+	
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: layui-transfer-js" />
+	<script type="text/javascript">
+		var url = ctx + "system/config/edit";
+		// 保存项目名称
+		function saveSysName(){
+			$.operate.saveModal(url, $('#sysName').serialize());
+		}
+		
+		// 保存版权，技术支持
+		function saveSysCopyright(){
+			$.operate.saveModal(url, $('#sysCopyright').serialize());
+		}
+		
+		// 保存LOGO
+		function saveSysLogo(){
+			$.operate.saveModal(url, $('#sysLogo').serialize());
+		}
+		
+		// 保存移动背景图片
+        function saveWXLoginBG(){
+            $.operate.saveModal(url, $('#wxlonginbg').serialize());
+        }
+		
+		// 上传LOGO
+		function uploadPhone(){
+			var formdata = new FormData(document.getElementById("sysLogo"));
+		    $.ajax({
+		        url: ctx + "system/config/uploadLogo",
+		        data: formdata,
+		        type: "post",
+		        processData: false,
+		        contentType: false,
+		        success: function(result) {
+		            var path = result.data.path;
+		            $("#logoImage").attr("src",ctx + path);
+		            $("#logoConfigValue").val(path);
+		        }
+		    })
+		}
+		
+		// 上传移动登录页图片
+		function uploadPhoto2(){
+			var formdata = new FormData(document.getElementById("wxlonginbg"));
+            $.ajax({
+                url: ctx + "system/config/uploadLogo",
+                data: formdata,
+                type: "post",
+                processData: false,
+                contentType: false,
+                success: function(result) {
+                    var path = result.data.path;
+                    $("#logoImage2").attr("src",ctx + path);
+                    $("#logoConfigValue2").val(path);
+                },error: function(err){
+					console.log(err)
+				}
+            })
+		}
+	</script>
+</body>
+</html>

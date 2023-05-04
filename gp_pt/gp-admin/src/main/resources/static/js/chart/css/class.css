@@ -1,0 +1,275 @@
+
+.menu-box .icon-line {
+    margin: 18px 0;
+}
+/*个人信息*/
+.student-info {
+    position: relative;
+    width: 100%;
+}
+.student-info-con {
+    position: absolute;
+    width: 70%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.avatar {
+    width: 120px;
+    height: 124px;
+    background: url(../images/avatar.png);
+    background-size: 100% 100%;
+    position: relative;
+}
+.avatar .img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 1px solid #3c7aeb;
+}
+.avatar img {
+    width: 100%;
+    height: auto;
+}
+.info {
+    width: 55%;
+    height: 100%;
+}
+.info-con {
+    width: 90%;
+}
+.info p {
+    color: #fff;
+    margin-top: 10px;
+}
+.info .class {
+    font-size: 22px;
+}
+.info .des-one,
+.info .des-two {
+    font-size: 16px;
+    color: #8ec8ff;
+    line-height: 1.5;
+}
+
+/*学生分数与排行*/
+.score-main .icon-down-svg {
+    margin-top: 9px;
+    margin-right: 14px;
+    margin-left: 0;
+}
+.score-main .title-s::-webkit-scrollbar {
+    width: 0;
+}
+/*滚动条整体样式*/
+.score-main .main-detail::-webkit-scrollbar {
+    width: 0;
+}
+/*学生查询*/
+
+.main-bottom .right-box {
+    overflow: hidden;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+}
+
+.student-main {
+    box-sizing: border-box;
+    width: 96%;
+    padding: 20px;
+    height: 86%;
+    overflow-y: scroll;
+}
+
+.student-main::-webkit-scrollbar { /*滚动条整体样式*/
+    width: 4px; /*高宽分别对应横竖滚动条的尺寸*/
+    height: 1px;
+}
+
+.student-main::-webkit-scrollbar-thumb { /*滚动条里面小方块*/
+    border-radius: 10px;
+    background-color: #8ec8ff;
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+}
+
+.student-main::-webkit-scrollbar-track { /*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    /*border-radius: 10px;*/
+    /*background: #EDEDED;*/
+}
+
+.student-main .item {
+    float: left;
+    width: 25%;
+    height: auto;
+    background: none;
+    margin-bottom: 30px;
+}
+
+.student-main .item .img {
+    width: 66px;
+    height: 66px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin:  0 auto;
+}
+.student-main .item .img img {
+    width: 100%;
+    height: auto;
+}
+.student-main .item p {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+}
+
+
+/*echarts*/
+.center-box .center-box-con {
+    position: relative;
+}
+.pjzb-e, .bjfs-e {
+    width: 100%;
+    height: 100%;
+}
+.bjfs-e {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 96%;
+}
+.xsfs-e {
+    position: absolute;
+    top: 15%;
+    left: 2%;
+    width: 96%;
+    height: 80%;
+    margin: 0 auto;
+}
+
+@media (min-width: 1561px) {
+    .avatar {
+        width: 160px;
+        height: 164px;
+    }
+    .avatar .img {
+        width: 120px;
+        height: 120px;
+    }
+    .info .class {
+        font-size: 26px;
+    }
+    .info .des-one, .info .des-two {
+        font-size: 20px;
+    }
+}
+@media (max-width: 1390px) {
+    .info .class {
+        font-size: 18px;
+    }
+    .info .des-one, .info .des-two {
+        font-size: 14px;
+    }
+
+}
+
+
+
+
+
+
+#tableBox {
+    width: 100%;
+    height: 49.5%;
+}
+
+#tableBox .main-detail {
+    height: 70%;
+}
+
+#tableBox span {
+    width: 25%;
+}
+
+#tableBox .list-item {
+    height: 30%;
+}
+
+.list-item:nth-child(2n) {
+    background-color: rgba(21,36,93,.5);
+}
+
+
+
+
+
+
+
+
+
+.gl .gl-input::-webkit-input-placeholder {
+    font-family: "Microsoft YaHei", Helvetica, Arial, sans-serif;
+    font-size: .84778rem;
+    color: #8ec8ff
+}
+.gl .selector {
+    display: none;
+    width: 13.71869rem;
+    height: 9.36416rem;
+    background: url(../images/selector_bg.png);
+    background-size: 100% 100%;
+    font-size: .77071rem;
+    padding: .77071rem 0;
+    color: #fff;
+    position: absolute;
+    left: -.38536rem;
+    top: 1.46435rem;
+    z-index: 200
+}
+.gl .selector ul {
+    height: 100%;
+    overflow-y: auto;
+    padding-left:15px;
+    -ms-overflow-style: none
+}
+.gl .selector ul::-webkit-scrollbar {
+    display: none
+}
+.gl .selector a {
+    color: #fff
+}
+.gl .selector a:hover {
+    color: #8ec8ff
+}
+.gl .selector .selector-item {
+    line-height: 20px;
+    text-align: left;
+    height: 20px;
+    font-size: 18px;
+    margin-top: 5px;
+}
+.gl .selector .sel-name {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 1.46435rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+.gl .selector .sel-class {
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+
+

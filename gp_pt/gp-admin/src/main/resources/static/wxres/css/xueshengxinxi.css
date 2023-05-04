@@ -1,0 +1,81 @@
+.big-wrap::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: url(../images/blur-down.png) no-repeat center top;
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+}
+.big-wrap ul {
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 30px;
+    margin-top: 5px;
+    color: #888;
+    font-size: 14px;
+    border-bottom: 10px solid #f2f2f2;
+}
+.big-wrap .other {
+    padding-left: 0;
+}
+.big-wrap ul li {
+    line-height: 44px;
+    border-bottom: 1px solid #f2f2f2;
+}
+.big-wrap .base li span {
+    float: right;
+    margin-right: 30px;
+}
+.big-wrap .other li {
+    border: none;
+    position: relative;
+}
+.big-wrap .other li a {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 30px;
+}
+.big-wrap .other li div {
+    border-bottom: 1px solid #f2f2f2;
+}
+.big-wrap ul li a {
+    width: 100%;
+    overflow: hidden;
+}
+.big-wrap ul li a span {
+    text-align: right;
+    float: right;
+    padding-right: 60px;
+}
+
+.big-wrap ul input {
+    text-align: right;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-right: 60px;
+    color: #888;
+}
+.big-wrap .other i {
+    color: #323232;
+}
+.big-wrap ul a s {
+    position: absolute;
+    right: 30px;
+    top: 0;
+    width: 7px;
+    height: 15px;
+    margin-top: 14px;
+    background: url(../images/arrow.svg) no-repeat right center;
+    -webkit-background-size: 7px 15px;
+    background-size: 7px 15px;
+}
+
+
+

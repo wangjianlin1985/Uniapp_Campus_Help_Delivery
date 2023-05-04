@@ -1,0 +1,161 @@
+.pull-loading{
+    width:100%;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    align-items: center;
+    justify-content: center;
+    position:fixed;
+    bottom:0px;
+}
+    
+#mydown,#mydownx {
+    width: 100%;
+    min-width: 320px;
+    position: absolute;
+    left: 0;
+    top: 40px;
+    bottom: 12px;
+    
+    z-index: 1;
+    /* 防止本机Windows上的触摸事件 */
+    -ms-touch-action: none;
+    
+    /* 防止callout tap-hold和文本的选择 */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+    /* 防止文本调整取向变化对web应用程序很有用 */
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+
+.wrap {
+    width: 100%;
+    box-sizing: border-box;
+}
+.tab {
+    width: 100%;
+    height: 44px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.tab div {
+    width: 100%;
+}
+
+.tab span {
+    position: relative;
+    font-weight: bold;
+    font-size: 16px;
+    color: #323232;
+    width: 50%;
+    line-height: 44px;
+    background: #fff;
+    text-align: center;
+}
+
+.tab span.current {
+    color: #00acee;
+}
+
+.tab span.current::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    content: '';
+    width: 80px;
+    border-bottom: 4px solid #00acee;
+}
+
+.occupied {
+    width: 100%;
+    height: 59px;
+    background-color: #fff;
+}
+.card {
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 10px solid #f2f2f2;
+}
+.card a {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+.info {
+    line-height: 44px;
+    border-bottom: 1px solid #f2f2f2;
+}
+.info strong {
+    font-size: 16px;
+    color: #323232;
+    font-weight: bold;
+    margin-right: 20px;
+}
+.info span {
+    font-size: 12px;
+    color: #b2b2b2;
+}
+.info .more {
+    padding-right: 12px;
+    background: url(../images/arrow.svg) no-repeat right center;
+    -webkit-background-size: 6px 12px;
+    background-size: 6px 12px;
+}
+.other {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 20px 10px;
+    margin-top: 10px;
+    line-height: 22px;
+}
+.other-info {
+    font-size: 13px;
+    color: #888;
+}
+.btns span {
+    margin-top: 20px;
+    font-size: 12px;
+    width: 44px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    border-radius: 9px;
+}
+.btns span:nth-child(1) {
+    color: #00acee;
+    border: 1px solid #00acee;
+    margin-right: 10px;
+}
+.btns span:nth-child(2) {
+    color: #f2395b;
+    border: 1px solid #f2395b;
+}
+@media screen and (max-width: 411px){
+
+    .info span {
+        font-size: 13px;
+    }
+    .other-info {
+        font-size: 14px;
+    }
+    .btns span {
+        font-size: 13px;
+    }
+}
+.shenpilishi .btns span {
+    margin-right: 0;
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('文章列表')" />
+</head>
+<body class="gray-bg">
+    <div class="container-div">
+        <div class="row">
+            <div class="col-sm-12 search-collapse">
+                <form id="role-form">
+                    <div class="select-list">
+                        <ul>
+                            <li>
+                                文章标题：<input type="text" name="mainTitle" />
+                            </li>
+                            <li>
+                                文章作者：<input type="text" name="mainAuthor" />
+                            </li>
+                            <li>
+                                文章分类：<select name="item.itemId" >
+                                    <option value="">所有</option>
+                                    <option th:each="item : ${itemList}" th:text="${item.itemName}" th:value="${item.itemId}"></option>
+                                </select>
+                            </li>
+                            <li>
+                                <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                                <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        
+            <div class="btn-group-sm" id="toolbar" role="group">
+                <a class="btn btn-success" onclick="$.operate.addTab()" >
+                    <i class="fa fa-plus"></i> 新增
+                </a>
+                <a class="btn btn-primary single disabled" onclick="$.operate.editTab()">
+                    <i class="fa fa-edit"></i> 修改
+                </a>
+                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" >
+                    <i class="fa fa-remove"></i> 删除
+                </a>
+            </div>
+            
+            <div class="col-sm-12 select-table table-striped">
+                <table id="bootstrap-table" data-mobile-responsive="true"></table>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script th:inline="javascript">
+        var datas = [[${@dict.getType('article_istop')}]];
+        var prefix = ctx + "article/main";
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+                exportUrl: prefix + "/export",
+                modalName: "文章",
+                columns: [{
+                    checkbox: true
+                },
+                {
+                    field: 'mainId',
+                    title: '文章编号',
+                    visible : false
+                },
+                {
+                    field: 'mainTitle',
+                    title: '标题',
+                    formatter: function(value, row, index) {
+                        return '<a href="javascript:void(0)" onclick="window.open(\''+prefix +'/content/'+ row.mainId+'\')">' + value + '</a>';
+                    }
+                },
+                {
+                    field: 'mainSummary',
+                    title: '摘要',
+                    formatter: function(value, row, index) {
+                        return $.table.tooltip(value,10);
+                    }
+                },
+                {
+                    field: 'mainAuthor',
+                    title: '作者'
+                },
+                {
+                    field: 'publishTime',
+                    title: '最后更新时间'
+                },
+                {
+                    field: 'item.itemName',
+                    title: '分类'
+                },
+                {
+                    field: 'istop',
+                    title: '置顶',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        return $.table.selectDictLabel(datas, value);
+                    }
+                },
+                {
+                    field: 'sort',
+                    title: '排序'
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-primary btn-xs " href="javascript:void(0)" onclick="$.operate.editTab(\'' + row.mainId + '\')"><i class="fa fa-edit"></i>修改</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs " href="javascript:void(0)" onclick="$.operate.remove(\'' + row.mainId + '\')"><i class="fa fa-remove"></i>删除</a> ');
+                        return actions.join('');
+                    }
+                }]
+            };
+            $.table.init(options);
+        });
+    </script>
+</body>
+</html>

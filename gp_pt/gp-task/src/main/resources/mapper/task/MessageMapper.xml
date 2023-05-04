@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.task.dao.MessageDao" >
+
+	<select id="listByOrderId" parameterType="Long" resultType="Message">
+		select
+			a.id,
+			a.content,
+			a.time,
+			a.utype,
+			a.order_id as orderId,
+			a.user_id as "user.userId",
+			b.user_name as "user.userName"
+		from task_message a 
+			left join sys_user b on a.user_id = b.user_id
+		where a.order_id = #{orderId} order by a.time desc
+	</select>
+	
+	
+	<insert id="add">
+		insert into task_message(content,time,utype,order_id,user_id) values (#{content},#{time},#{utype},#{orderId},#{user.userId})
+	</insert>
+
+
+</mapper>
